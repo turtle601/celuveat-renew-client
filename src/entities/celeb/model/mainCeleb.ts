@@ -1,4 +1,11 @@
-export const mainCeleb = [
+export type Celeb = {
+  id: number;
+  name: string;
+  youtubeChannelName: string;
+  profileImageUrl: string;
+};
+
+export const mainCeleb: Celeb[] = [
   {
     id: 7,
     name: '성시경',

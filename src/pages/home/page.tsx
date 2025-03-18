@@ -1,31 +1,25 @@
-import { css } from '@emotion/react';
+import { Container, Flex, Spacer } from 'ik-ui-library';
 
 import { DesktopHeader } from '../../widgets/header';
 import { CelebProfileList } from '../../features/celeb/ui';
+import { RecommendRestaurantCardList } from '../../features/restaurant/ui';
 
 function Page() {
   return (
-    <main
-      css={css({
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '2.4rem',
-        width: '100%',
-        boxSizing: 'content-box',
-        maxWidth: '1240px',
-        margin: '0 auto',
-        paddingBottom: '4.4rem',
-      })}
-    >
+    <Container as="main" maxWidth="1240px" minWidth="768px">
       <DesktopHeader />
+      <Spacer direction="vertical" space={'32px'} />
       <section>
-        <h2>셀럽 Best</h2>
+        <Flex as="h1">셀럽 Best</Flex>
         <CelebProfileList />
       </section>
+      <Spacer direction="vertical" space={'32px'} />
       <section>
-        <h2>추천 맛집!</h2>
+        <Flex as="h1">추천 맛집!</Flex>
+        <Spacer direction="vertical" space={'32px'} />
+        <RecommendRestaurantCardList />
       </section>
-    </main>
+    </Container>
   );
 }
 

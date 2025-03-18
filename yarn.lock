@@ -1373,6 +1373,11 @@ ignore@^5.2.0, ignore@^5.3.1:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.3.2.tgz#3cd40e729f3643fd87cb04e50bf0eb722bc596f5"
   integrity sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==
 
+ik-ui-library@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ik-ui-library/-/ik-ui-library-1.1.1.tgz#c6d01e0a104fd99cd53ec53e61e75bac87e5d429"
+  integrity sha512-B+C+JeVolhcxpNJHmpMAOcXj+IbCP3yM4qqqxXjzNET2YigocFKQvEHuXqPC1AfWNa9nCRJOC4fdJcRv8stOyA==
+
 import-fresh@^3.2.1, import-fresh@^3.3.0:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.3.1.tgz#9cecb56503c0ada1f2741dbbd6546e4b13b57ccf"

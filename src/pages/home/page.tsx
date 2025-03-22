@@ -6,7 +6,7 @@ import { RecommendRestaurantCardList } from '../../features/restaurant/ui';
 
 function Page() {
   return (
-    <Container as="main" maxWidth="1240px" minWidth="768px">
+    <Container as="main" maxWidth={'1240px'} minWdith={'260px'}>
       <DesktopHeader />
       <Spacer direction="vertical" space={'32px'} />
       <section>

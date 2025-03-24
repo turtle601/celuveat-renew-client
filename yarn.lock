@@ -856,10 +856,15 @@
   resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.6.0.tgz#eac397f28bf1d6ae0ae081363eca2f425bedf0d5"
   integrity sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==
 
-"@types/estree@1.0.6", "@types/estree@^1.0.0", "@types/estree@^1.0.6":
+"@types/estree@1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.6.tgz#628effeeae2064a1b4e79f78e81d87b7e5fc7b50"
   integrity sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==
+
+"@types/estree@^1.0.0", "@types/estree@^1.0.6":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.7.tgz#4158d3105276773d5b7695cd4834b1722e4f37a8"
+  integrity sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==
 
 "@types/json-schema@^7.0.15":
   version "7.0.15"
@@ -1535,10 +1540,10 @@ ignore@^5.2.0, ignore@^5.3.1:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.3.2.tgz#3cd40e729f3643fd87cb04e50bf0eb722bc596f5"
   integrity sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==
 
-ik-ui-library@^1.5.5:
-  version "1.5.5"
-  resolved "https://registry.yarnpkg.com/ik-ui-library/-/ik-ui-library-1.5.5.tgz#30fd35c924456475356087a9bb1159901fb0a1d9"
-  integrity sha512-8UEPlsKF15UtiUBRAQ5JvgrmeZ6c4SS60pJWeoVoV+8w/Gj14NO/2WNze9PyjOxvesQFBtuF1arOnokPJe8KDg==
+ik-ui-library@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/ik-ui-library/-/ik-ui-library-1.6.0.tgz#bc5aa6c9b65aeca2e5c0e09bc66bd160f90c1fd1"
+  integrity sha512-pX4MWdWx2uQE5fx/nog6Q6JGA9QcalY26VZ0HrObrSCCIJPgnSvddPOub7jqmiZxKQiMQI0OB/fkFNZhT41h8Q==
   dependencies:
     zustand "^5.0.3"
 
@@ -2150,9 +2155,9 @@ type-fest@^0.21.3:
   integrity sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==
 
 type-fest@^4.26.1:
-  version "4.37.0"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.37.0.tgz#7cf008bf77b63a33f7ca014fa2a3f09fd69e8937"
-  integrity sha512-S/5/0kFftkq27FPNye0XM1e2NsnoD/3FS+pBmbjmmtLT6I+i344KoOf7pvXreaFsDamWeaJX55nczA1m5PsBDg==
+  version "4.38.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.38.0.tgz#659fa14d1a71c2811400aa3b5272627e0c1e6b96"
+  integrity sha512-2dBz5D5ycHIoliLYLi0Q2V7KRaDlH0uWIvmk7TYlAg5slqwiPv1ezJdZm1QEM0xgk29oYWMCbIG7E6gHpvChlg==
 
 typescript-eslint@^8.24.1:
   version "8.27.0"

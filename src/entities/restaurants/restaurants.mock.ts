@@ -25,7 +25,8 @@ export const restaurantsMock: RestaurantsResponseType = {
             'https://yt3.googleusercontent.com/ALEqZi9aeCfyxCfmNEJGf0CXpbkabeMFNACcyD53j7GwFmC5qPgbRS5xStq67KDmfPVclMsK=s176-c-k-c0x00ffffff-no-rj',
         },
       ],
-      imgUrl: '',
+      imgUrl:
+        'https://d31rnrutceiwvg.cloudfront.net/restaurants/nb_images/642V67aEIOuqrOuTnOumrOyViO2YuO2FlOygkF9wbGVoY3Vva2JuenhzZGlh',
     },
     {
       id: 1016,
@@ -50,7 +51,8 @@ export const restaurantsMock: RestaurantsResponseType = {
             'https://yt3.googleusercontent.com/ALEqZi9aeCfyxCfmNEJGf0CXpbkabeMFNACcyD53j7GwFmC5qPgbRS5xStq67KDmfPVclMsK=s176-c-k-c0x00ffffff-no-rj',
         },
       ],
-      imgUrl: '',
+      imgUrl:
+        'https://d31rnrutceiwvg.cloudfront.net/restaurants/nb_images/642V67aEIOuqrOuTnOumrOyViO2YuO2FlOygkF9wbGVoY3Vva2JuenhzZGlh',
     },
     {
       id: 1015,
@@ -75,7 +77,8 @@ export const restaurantsMock: RestaurantsResponseType = {
             'https://yt3.googleusercontent.com/ALEqZi9aeCfyxCfmNEJGf0CXpbkabeMFNACcyD53j7GwFmC5qPgbRS5xStq67KDmfPVclMsK=s176-c-k-c0x00ffffff-no-rj',
         },
       ],
-      imgUrl: '',
+      imgUrl:
+        'https://d31rnrutceiwvg.cloudfront.net/restaurants/nb_images/642V67aEIOuqrOuTnOumrOyViO2YuO2FlOygkF9wbGVoY3Vva2JuenhzZGlh',
     },
     {
       id: 1014,
@@ -100,7 +103,8 @@ export const restaurantsMock: RestaurantsResponseType = {
             'https://yt3.googleusercontent.com/ALEqZi9aeCfyxCfmNEJGf0CXpbkabeMFNACcyD53j7GwFmC5qPgbRS5xStq67KDmfPVclMsK=s176-c-k-c0x00ffffff-no-rj',
         },
       ],
-      imgUrl: '',
+      imgUrl:
+        'https://d31rnrutceiwvg.cloudfront.net/restaurants/nb_images/642V67aEIOuqrOuTnOumrOyViO2YuO2FlOygkF9wbGVoY3Vva2JuenhzZGlh',
     },
     {
       id: 1013,
@@ -125,7 +129,8 @@ export const restaurantsMock: RestaurantsResponseType = {
             'https://yt3.googleusercontent.com/ALEqZi9aeCfyxCfmNEJGf0CXpbkabeMFNACcyD53j7GwFmC5qPgbRS5xStq67KDmfPVclMsK=s176-c-k-c0x00ffffff-no-rj',
         },
       ],
-      imgUrl: '',
+      imgUrl:
+        'https://d31rnrutceiwvg.cloudfront.net/restaurants/nb_images/642V67aEIOuqrOuTnOumrOyViO2YuO2FlOygkF9wbGVoY3Vva2JuenhzZGlh',
     },
     {
       id: 1012,
@@ -150,7 +155,8 @@ export const restaurantsMock: RestaurantsResponseType = {
             'https://yt3.googleusercontent.com/ALEqZi9aeCfyxCfmNEJGf0CXpbkabeMFNACcyD53j7GwFmC5qPgbRS5xStq67KDmfPVclMsK=s176-c-k-c0x00ffffff-no-rj',
         },
       ],
-      imgUrl: '',
+      imgUrl:
+        'https://d31rnrutceiwvg.cloudfront.net/restaurants/nb_images/642V67aEIOuqrOuTnOumrOyViO2YuO2FlOygkF9wbGVoY3Vva2JuenhzZGlh',
     },
   ],
   currentPage: 0,

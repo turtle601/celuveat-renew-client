@@ -2,9 +2,9 @@ import { queryClient } from '../../shared/lib/tanstack-query';
 
 import {
   queryOptions as tsqQueryOptions,
-  useQuery,
+  useSuspenseQuery,
 } from '@tanstack/react-query';
-  
+
 import { restaurantsQuery } from './restaurants.api';
 import { RestaurantsResponseType } from './restaurants.type';
 
@@ -31,5 +31,5 @@ export const restaurantsService = {
 };
 
 export const useRestaurantsQuery = () => {
-  return useQuery(restaurantsService.queryOptions());
+  return useSuspenseQuery(restaurantsService.queryOptions());
 };

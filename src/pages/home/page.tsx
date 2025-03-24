@@ -1,15 +1,14 @@
-import { Container, Flex, Responsive, spacer } from 'ik-ui-library';
-
+import { Suspense } from 'react';
 import { css } from '@emotion/react';
+
+import { Container, Flex, Responsive, spacer } from 'ik-ui-library';
 
 import { breakPoint } from '../../shared/constant/breakpoint';
 
 import { Header, Nav } from '../../widgets';
-import { useRestaurantsQuery } from '../../entities/restaurants';
+import { RestaurantsCardGrid } from '../../features/restaurants/ui';
 
 function Page() {
-  useRestaurantsQuery();
-
   return (
     <>
       <Container maxWidth={`${breakPoint.lg}px`}>
@@ -17,7 +16,7 @@ function Page() {
           defaultStyles={{
             padding: `0 ${spacer.spacing5}`,
           }}
-          breakpoint={[breakPoint.md]}
+          breakpoint={[breakPoint.lg]}
           breakPointStyles={[
             {
               '& button': {
@@ -46,7 +45,7 @@ function Page() {
             defaultStyles={{
               display: 'none',
             }}
-            breakpoint={[breakPoint.md]}
+            breakpoint={[breakPoint.lg]}
             breakPointStyles={[
               {
                 display: 'block',
@@ -59,7 +58,26 @@ function Page() {
           >
             <Nav />
           </Responsive>
-          <div>목록</div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Responsive
+              defaultStyles={{
+                width: '100%',
+                '& section': {
+                  gridTemplateColumns: `repeat(6, minmax(0, 1fr))`,
+                },
+              }}
+              breakpoint={[breakPoint.lg]}
+              breakPointStyles={[
+                {
+                  '& section': {
+                    gridTemplateColumns: `repeat(12, minmax(0, 1fr))`,
+                  },
+                },
+              ]}
+            >
+              <RestaurantsCardGrid />
+            </Responsive>
+          </Suspense>
         </Flex>
       </Container>
     </>

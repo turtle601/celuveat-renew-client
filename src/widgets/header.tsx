@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 
-import { Flex, Sidebar, spacer } from 'ik-ui-library';
+import { Flex, Sidebar } from 'ik-ui-library';
 
 import Logo from '../shared/assets/logo/logo.svg?react';
 import List from '../shared/assets/etc/list.svg?react';
@@ -14,7 +14,6 @@ function Header() {
       etcStyles={{
         width: '100%',
         height: '80px',
-        padding: `0 ${spacer.spacing5}`,
       }}
     >
       <Link role="button" to="/">

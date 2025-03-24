@@ -1,4 +1,4 @@
-import { Container, Responsive } from 'ik-ui-library';
+import { Container, Responsive, spacer } from 'ik-ui-library';
 
 import { css } from '@emotion/react';
 
@@ -11,6 +11,9 @@ function Page() {
     <>
       <Container maxWidth={`${breakPoint.lg}px`}>
         <Responsive
+          defaultStyles={{
+            padding: `0 ${spacer.spacing5}`,
+          }}
           breakpoint={[breakPoint.md]}
           breakPointStyles={[
             {
@@ -42,7 +45,7 @@ function Page() {
               width: '200px',
               height: '100vh',
               borderRight: '1px solid #eee',
-              padding: '2.5rem 1.5rem 0 0',
+              padding: `2.5rem ${spacer['spacing2.5']} 0 ${spacer.spacing5}`,
             },
           ]}
         >

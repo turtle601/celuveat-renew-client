@@ -1,12 +1,13 @@
 import { Suspense } from 'react';
 import { css } from '@emotion/react';
 
-import { Container, Flex, Responsive, spacer } from 'ik-ui-library';
+import { Container, Flex, Responsive, spacer, Tab } from 'ik-ui-library';
 
 import { breakPoint } from '../../shared/constant/breakpoint';
 
 import { Header, Nav } from '../../widgets';
 import { RestaurantsCardGrid } from '../../features/restaurants/ui';
+import RestaurantFilterNav from '../../widgets/restaurantFilterNav';
 
 function Page() {
   return (
@@ -35,9 +36,10 @@ function Page() {
           backgroundColor: '#eee',
         })}
       ></div>
-      <Container maxWidth={`${breakPoint.lg}px`}>
+      <Container maxWidth={`${breakPoint.lg}px`} etcStyles={{ width: '100%' }}>
         <Flex
           etcStyles={{
+            width: '100%',
             padding: `0 ${spacer.spacing5}`,
           }}
         >
@@ -58,26 +60,36 @@ function Page() {
           >
             <Nav />
           </Responsive>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Responsive
-              defaultStyles={{
-                width: '100%',
-                '& section': {
-                  gridTemplateColumns: `repeat(6, minmax(0, 1fr))`,
-                },
-              }}
-              breakpoint={[breakPoint.lg]}
-              breakPointStyles={[
-                {
-                  '& section': {
-                    gridTemplateColumns: `repeat(12, minmax(0, 1fr))`,
-                  },
-                },
-              ]}
-            >
-              <RestaurantsCardGrid />
-            </Responsive>
-          </Suspense>
+          <div css={{ width: '100%' }}>
+            <RestaurantFilterNav />
+            <Tab.Panels etcStyle={{ width: '100%' }}>
+              <Tab.Panel>
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Responsive
+                    defaultStyles={{
+                      width: '100%',
+                      '& section': {
+                        gridTemplateColumns: `repeat(6, minmax(0, 1fr))`,
+                      },
+                    }}
+                    breakpoint={[breakPoint.lg]}
+                    breakPointStyles={[
+                      {
+                        '& section': {
+                          gridTemplateColumns: `repeat(12, minmax(0, 1fr))`,
+                        },
+                      },
+                    ]}
+                  >
+                    <RestaurantsCardGrid />
+                  </Responsive>
+                </Suspense>
+              </Tab.Panel>
+              <Tab.Panel>
+                <></>
+              </Tab.Panel>
+            </Tab.Panels>
+          </div>
         </Flex>
       </Container>
     </>

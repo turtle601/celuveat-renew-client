@@ -37,12 +37,12 @@ export const useCelebritiesQuery = () => {
 };
 
 export const useFilterCelebMutation = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
 
-  const mutation = (celebId: number) => {
+  const mutation = (celebName: string) => {
     setSearchParams({
-      ...searchParams,
-      celebId: String(celebId),
+      page: '1',
+      celeb: celebName,
     });
   };
 

@@ -1,9 +1,10 @@
 import { http, HttpResponse } from 'msw';
 
-import { restaurantsMock } from '../entities/restaurants/restaurants.mock';
 import { API_URL } from '../shared/constant/url';
-import { celebritiesMock } from '../entities/celebrities/celebrities.mock';
+
+import { restaurantsMock } from '../entities/restaurants/restaurants.mock';
 import { categoriesMock } from '../entities/categories/categories.mock';
+import { getCelebritiesMock } from '../entities/celebrities/celebrities.mock';
 
 import type { RestaurantsResponseType } from '../entities/restaurants/restaurants.type';
 import type { CelebritiesResponseType } from '../entities/celebrities';
@@ -15,18 +16,30 @@ export const handlers = [
     const pageNum = Number(url.searchParams.get('page'));
     const offSetNum = Number(url.searchParams.get('offset'));
 
+    const celeb = url.searchParams.get('celeb');
+
+    const filteredRestaurant = celeb
+      ? restaurantsMock.filter((restaurant) => {
+          return restaurant.visitedCelebrities.some(
+            (visitedCeleb) => visitedCeleb.name === celeb
+          );
+        })
+      : restaurantsMock;
+
     return HttpResponse.json<RestaurantsResponseType>({
-      content: restaurantsMock.slice(
+      content: filteredRestaurant.slice(
         offSetNum * (pageNum - 1),
         offSetNum * (pageNum - 1) + offSetNum
       ),
-      totalPage: Math.ceil(restaurantsMock.length / offSetNum),
-      size: restaurantsMock.length,
+      totalPage: Math.ceil(filteredRestaurant.length / offSetNum),
+      size: filteredRestaurant.length,
     });
   }),
 
   http.get(`${API_URL}/celebrities`, () => {
-    return HttpResponse.json<CelebritiesResponseType>(celebritiesMock);
+    return HttpResponse.json<CelebritiesResponseType>({
+      content: getCelebritiesMock(),
+    });
   }),
 
   http.get(`${API_URL}/categories`, () => {

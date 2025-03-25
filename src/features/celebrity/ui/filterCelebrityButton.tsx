@@ -13,7 +13,7 @@ function FilterCelebrityButton({ celeb }: FilterCelebrityButtonProps) {
   const { mutation } = useFilterCelebMutation();
 
   const handleClick = () => {
-    mutation(celeb.id);
+    mutation(celeb.name);
   };
 
   return (

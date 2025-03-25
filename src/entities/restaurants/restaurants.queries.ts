@@ -41,8 +41,9 @@ export const useRestaurantsQuery = () => {
   const [searchParams] = useSearchParams();
 
   const page = Number(searchParams.get('page') ?? '1');
+  const celeb = searchParams.get('celeb') || undefined;
 
-  return useSuspenseQuery(restaurantsService.queryOptions({ page }));
+  return useSuspenseQuery(restaurantsService.queryOptions({ page, celeb }));
 };
 
 export const useRestaurantPageMutation = () => {

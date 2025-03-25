@@ -9,9 +9,9 @@ function FilterCategories() {
 
   return (
     <Grid.Container as="section" etcStyles={{ width: '100%' }} gap={'4px'}>
-      {categories.content.map((category) => {
+      {categories.content.map((category, id) => {
         return (
-          <Grid.Item xs={4} key={category.id} etcStyles={{ width: '100%' }}>
+          <Grid.Item xs={4} key={id} etcStyles={{ width: '100%' }}>
             <FilterCategoryButton category={category} />
           </Grid.Item>
         );

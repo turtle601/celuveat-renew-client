@@ -7,11 +7,11 @@ export const getCelebritiesMock = () => {
     .flatMap((restaurant) => {
       return restaurant.visitedCelebrities;
     })
-    .reduce((acc, celeb) => {
+    .reduce<Celebrity[]>((acc, celeb) => {
       if (acc.filter((v) => celeb.name === v.name).length === 0) {
         acc.push(celeb);
       }
 
       return acc;
-    }, [] as Celebrity[]);
+    }, []);
 };

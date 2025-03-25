@@ -42,6 +42,7 @@ export const useFilterCategoryMutation = () => {
   const mutation = (category: string | undefined) => {
     setSearchParams({
       ...searchParams,
+      page: '1',
       category,
     });
   };

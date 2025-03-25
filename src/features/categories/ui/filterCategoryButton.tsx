@@ -13,7 +13,7 @@ function FilterCategoryButton({ category }: FilterCategoryButtonProps) {
   const { mutation } = useFilterCategoryMutation();
 
   const handleClick = () => {
-    mutation(category.name);
+    mutation(category);
   };
 
   return (
@@ -30,7 +30,7 @@ function FilterCategoryButton({ category }: FilterCategoryButtonProps) {
       }}
     >
       <Center etcStyles={{ width: '100%' }}>
-        <Text label={category.name} textWeight="bold" textSize="sm" />
+        <Text label={category} textWeight="bold" textSize="sm" />
       </Center>
     </Modal.Toggle>
   );

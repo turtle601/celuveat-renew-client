@@ -1,8 +1,4 @@
-export type Celebrity = {
-  id: number;
-  name: string;
-  profileImageUrl: string;
-};
+import type { Celebrity } from '../celebrities/celebrities.type';
 
 export type Restaurant = {
   id: number;

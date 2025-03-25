@@ -8,7 +8,10 @@ function RestaurantsCardGrid() {
   const { data: restaurantsData } = useRestaurantsQuery();
 
   return (
-    <Grid.Container as="section" etcStyles={{ height: 'min-content' }}>
+    <Grid.Container
+      as="section"
+      etcStyles={{ width: '100%', height: 'min-content' }}
+    >
       {restaurantsData.content.map((restaurant) => {
         return (
           <Grid.Item xs={6} key={restaurant.id}>

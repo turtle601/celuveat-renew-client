@@ -64,7 +64,6 @@ function RestaurantCard({ restaurant }: RestaurantCardProps) {
               fontSize: '10px',
               color: color['primary-1'],
               fontWeight: 'bold',
-              // verticalAlign: 'middle',
             })}
           >{`${restaurant.visitedCelebrities[0].name} 외 ${restaurant.visitedCelebrities.length}명 추천`}</span>
         </Flex>

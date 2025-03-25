@@ -1540,10 +1540,10 @@ ignore@^5.2.0, ignore@^5.3.1:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.3.2.tgz#3cd40e729f3643fd87cb04e50bf0eb722bc596f5"
   integrity sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==
 
-ik-ui-library@^1.8.1:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/ik-ui-library/-/ik-ui-library-1.8.1.tgz#b161587016d2a22a0242b7b45be9109a7ff82e0a"
-  integrity sha512-afAt4hlk0gUYg0NME0WfdCzSTGVbjS8rCwvHS77FbS7pXDAfylWIJ2E6CChQl9MODlqpjaE2Lg05qCq0ZDk11g==
+ik-ui-library@^1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/ik-ui-library/-/ik-ui-library-1.8.2.tgz#d7403ff5b2139ef13bc502bf8341992e0c39df04"
+  integrity sha512-qnpw7EKE0pI31q6r0pvX8bBv6sLiarNWuWpxFJWS8rMbXqtt4Z1qC2820vlSdtVV4ZSegWmJiyrRzr/gkK8rDA==
   dependencies:
     zustand "^5.0.3"
 

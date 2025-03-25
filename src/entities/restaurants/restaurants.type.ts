@@ -15,7 +15,6 @@ export type Restaurant = {
 
 export type RestaurantsResponseType = {
   content: Restaurant[];
-  currentPage: number;
-  hasNext: boolean;
+  totalPage: number;
   size: number;
 };

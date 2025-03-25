@@ -159,7 +159,6 @@ export const restaurantsMock: RestaurantsResponseType = {
         'https://d31rnrutceiwvg.cloudfront.net/restaurants/nb_images/642V67aEIOuqrOuTnOumrOyViO2YuO2FlOygkF9wbGVoY3Vva2JuenhzZGlh',
     },
   ],
-  currentPage: 0,
-  hasNext: false,
+  totalPage: 1,
   size: 6,
 };

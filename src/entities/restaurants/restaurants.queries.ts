@@ -1,35 +1,75 @@
-import { queryClient } from '../../shared/lib/tanstack-query';
-
+import { useSearchParams } from 'react-router';
 import {
   queryOptions as tsqQueryOptions,
   useSuspenseQuery,
 } from '@tanstack/react-query';
 
-import { restaurantsQuery } from './restaurants.api';
-import { RestaurantsResponseType } from './restaurants.type';
+import { queryClient } from '../../shared/lib/tanstack-query';
+import { restaurantsQuery, RestaurantsQueryParams } from './restaurants.api';
+
+import type { RestaurantsResponseType } from './restaurants.type';
 
 export const keys = {
   root: ['restaurant'],
+  queryParams: (params: RestaurantsQueryParams) => {
+    return { ...params };
+  },
 } as const;
 
 export const restaurantsService = {
-  queryKey: () => [keys.root],
-  invalidateCache: async () =>
+  queryKey: (params: RestaurantsQueryParams) => [
+    ...keys.root,
+    keys.queryParams(params),
+  ],
+  invalidateCache: async (params: RestaurantsQueryParams) =>
     await queryClient.invalidateQueries({
-      queryKey: restaurantsService.queryKey(),
+      queryKey: restaurantsService.queryKey(params),
     }),
-  cancelCache: async () =>
+  cancelCache: async (params: RestaurantsQueryParams) =>
     await queryClient.cancelQueries({
-      queryKey: restaurantsService.queryKey(),
+      queryKey: restaurantsService.queryKey(params),
     }),
-  queryOptions: () => {
+  queryOptions: (params: RestaurantsQueryParams) => {
     return tsqQueryOptions<RestaurantsResponseType>({
-      queryKey: restaurantsService.queryKey(),
-      queryFn: restaurantsQuery,
+      queryKey: restaurantsService.queryKey(params),
+      queryFn: () => restaurantsQuery(params),
     });
   },
 };
 
 export const useRestaurantsQuery = () => {
-  return useSuspenseQuery(restaurantsService.queryOptions());
+  const [searchParams] = useSearchParams();
+
+  const page = Number(searchParams.get('page') ?? '1');
+
+  return useSuspenseQuery(restaurantsService.queryOptions({ page }));
+};
+
+export const useRestaurantPageMutation = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const mutation = (pageNum: number) => {
+    setSearchParams({
+      ...searchParams,
+      page: pageNum.toString(),
+    });
+  };
+
+  const prevPageMutation = () => {
+    const page = Number(searchParams.get('page') ?? '1');
+
+    mutation(page - 1);
+  };
+
+  const nextPageMutation = () => {
+    const page = Number(searchParams.get('page') ?? '1');
+
+    mutation(page + 1);
+  };
+
+  return {
+    mutation,
+    prevPageMutation,
+    nextPageMutation,
+  };
 };

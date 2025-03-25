@@ -2,10 +2,16 @@ import { Center, Flex, Grid, Pagination, spacer, Spacer } from 'ik-ui-library';
 
 import { RestaurantCard } from '../../../entities/restaurants/ui';
 
-import { useRestaurantsQuery } from '../../../entities/restaurants';
+import {
+  useRestaurantPageMutation,
+  useRestaurantsQuery,
+} from '../../../entities/restaurants';
 
 function RestaurantsCardGrid() {
   const { data: restaurantsData } = useRestaurantsQuery();
+
+  const { mutation, prevPageMutation, nextPageMutation } =
+    useRestaurantPageMutation();
 
   return (
     <>
@@ -30,11 +36,22 @@ function RestaurantsCardGrid() {
           {({ pageNumList, isNextDisabled, isPrevDisabled }) => {
             return (
               <Flex gap="8px">
-                <Pagination.PrevBtn isDisabled={isPrevDisabled} />
+                <Pagination.PrevBtn
+                  isDisabled={isPrevDisabled}
+                  externalOnClick={prevPageMutation}
+                />
                 {pageNumList.map((pageNum) => {
-                  return <Pagination.NumBtn pageNum={pageNum} />;
+                  return (
+                    <Pagination.NumBtn
+                      pageNum={pageNum}
+                      externalOnClick={() => mutation(pageNum)}
+                    />
+                  );
                 })}
-                <Pagination.NextBtn isDisabled={isNextDisabled} />
+                <Pagination.NextBtn
+                  isDisabled={isNextDisabled}
+                  externalOnClick={nextPageMutation}
+                />
               </Flex>
             );
           }}

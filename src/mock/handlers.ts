@@ -10,8 +10,19 @@ import type { CelebritiesResponseType } from '../entities/celebrities';
 import type { CategoriesResponseType } from '../entities/categories';
 
 export const handlers = [
-  http.get(`${API_URL}/restaurants`, () => {
-    return HttpResponse.json<RestaurantsResponseType>(restaurantsMock);
+  http.get(`${API_URL}/restaurants`, ({ request }) => {
+    const url = new URL(request.url);
+    const pageNum = Number(url.searchParams.get('page'));
+    const offSetNum = Number(url.searchParams.get('offset'));
+
+    return HttpResponse.json<RestaurantsResponseType>({
+      content: restaurantsMock.slice(
+        offSetNum * (pageNum - 1),
+        offSetNum * (pageNum - 1) + offSetNum
+      ),
+      totalPage: Math.ceil(restaurantsMock.length / offSetNum),
+      size: restaurantsMock.length,
+    });
   }),
 
   http.get(`${API_URL}/celebrities`, () => {

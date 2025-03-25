@@ -33,7 +33,7 @@ export const handlers = [
       ? filteredCelebRestaurant.filter((restaurant) => {
           return restaurant.category === category;
         })
-      : restaurantsMock;
+      : filteredCelebRestaurant;
 
     return HttpResponse.json<RestaurantsResponseType>({
       content: filteredRestaurant.slice(

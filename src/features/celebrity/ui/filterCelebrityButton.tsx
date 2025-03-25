@@ -4,6 +4,7 @@ import {
   Celebrity,
   useFilterCelebMutation,
 } from '../../../entities/celebrities';
+import { useSearchParams } from 'react-router';
 
 interface FilterCelebrityButtonProps {
   celeb: Celebrity;
@@ -11,6 +12,8 @@ interface FilterCelebrityButtonProps {
 
 function FilterCelebrityButton({ celeb }: FilterCelebrityButtonProps) {
   const { mutation } = useFilterCelebMutation();
+  const [searchParams] = useSearchParams();
+  const isActive = searchParams.get('celeb') === celeb.name;
 
   const handleClick = () => {
     mutation(celeb.name);
@@ -24,7 +27,7 @@ function FilterCelebrityButton({ celeb }: FilterCelebrityButtonProps) {
         width: '100%',
         height: '50px',
         backgroundColor: 'transparent',
-        border: `1px solid ${color['gray100']}`,
+        border: `1px solid ${isActive ? color['primary-4'] : color['gray100']}`,
         borderRadius: borderRadius.md,
         cursor: 'pointer',
       }}

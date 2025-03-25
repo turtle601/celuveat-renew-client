@@ -1,8 +1,11 @@
 import { borderRadius, Center, color, Modal, Text } from 'ik-ui-library';
 import { useFilterCelebMutation } from '../../../entities/celebrities';
+import { useSearchParams } from 'react-router';
 
 function ResetFilterCelebrities() {
   const { mutation } = useFilterCelebMutation();
+  const [searchParams] = useSearchParams();
+  const isActive = searchParams.get('celeb') === null;
 
   const handleClick = () => {
     mutation();
@@ -16,7 +19,7 @@ function ResetFilterCelebrities() {
         width: '100%',
         height: '50px',
         backgroundColor: 'transparent',
-        border: `1px solid ${color['gray100']}`,
+        border: `1px solid ${isActive ? color['primary-4'] : color['gray100']}`,
         borderRadius: borderRadius.md,
         cursor: 'pointer',
       }}

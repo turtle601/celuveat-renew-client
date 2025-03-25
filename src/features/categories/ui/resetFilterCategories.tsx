@@ -1,9 +1,12 @@
+import { useSearchParams } from 'react-router';
 import { borderRadius, Center, color, Modal, Text } from 'ik-ui-library';
 
 import { useFilterCategoryMutation } from '../../../entities/categories';
 
 function ResetFilterCategories() {
   const { mutation } = useFilterCategoryMutation();
+  const [searchParams] = useSearchParams();
+  const isActive = searchParams.get('category') === null;
 
   const handleClick = () => {
     mutation();
@@ -17,7 +20,7 @@ function ResetFilterCategories() {
         width: '100%',
         height: '50px',
         backgroundColor: 'transparent',
-        border: `1px solid ${color['gray100']}`,
+        border: `1px solid ${isActive ? color['primary-4'] : color['gray100']}`,
         borderRadius: borderRadius.md,
         cursor: 'pointer',
       }}

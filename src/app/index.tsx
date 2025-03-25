@@ -1,16 +1,21 @@
 import { Global } from '@emotion/react';
 
-import { Root } from './router';
 import { getResetStyle } from '../shared/styles/reset';
-import { SidebarPortal } from './portal';
+
+import { Root } from './router';
 import { QueryClientProvider } from './provider';
+import { SidebarPortal, ModalPortal } from './portal';
+import { BrowserRouter } from 'react-router';
 
 function App() {
   return (
     <QueryClientProvider>
-      <Global styles={getResetStyle()} />
-      <Root />
-      <SidebarPortal />
+      <BrowserRouter>
+        <Global styles={getResetStyle()} />
+        <Root />
+        <SidebarPortal />
+        <ModalPortal />
+      </BrowserRouter>
     </QueryClientProvider>
   );
 }

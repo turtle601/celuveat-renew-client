@@ -9,6 +9,7 @@ import { useSearchParams } from 'react-router';
 import { categoriesQuery } from './categories.api';
 
 import type { CategoriesResponseType } from './categories.type';
+import { getQueryString } from '../../shared/lib/queryString';
 
 export const keys = {
   root: ['categories'],
@@ -39,12 +40,14 @@ export const useCategoriesQuery = () => {
 export const useFilterCategoryMutation = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const mutation = (category: string | undefined) => {
-    setSearchParams({
-      ...searchParams,
-      page: '1',
-      category,
-    });
+  const mutation = (category?: string) => {
+    setSearchParams(
+      getQueryString({
+        page: '1',
+        category,
+        celeb: searchParams.get('celeb'),
+      })
+    );
   };
 
   return {

@@ -9,6 +9,7 @@ import { celebritiesQuery } from './celebrities.api';
 
 import type { CelebritiesResponseType } from './celebrities.type';
 import { useSearchParams } from 'react-router';
+import { getQueryString } from '../../shared/lib/queryString';
 
 export const keys = {
   root: ['celebrities'],
@@ -39,12 +40,14 @@ export const useCelebritiesQuery = () => {
 export const useFilterCelebMutation = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const mutation = (celebName: string) => {
-    setSearchParams({
-      ...searchParams,
-      page: '1',
-      celeb: celebName,
-    });
+  const mutation = (celebName?: string) => {
+    setSearchParams(
+      getQueryString({
+        page: '1',
+        category: searchParams.get('category'),
+        celeb: celebName,
+      })
+    );
   };
 
   return {

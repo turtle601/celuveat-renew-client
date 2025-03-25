@@ -33,6 +33,7 @@ export const restaurantsService = {
     return tsqQueryOptions<RestaurantsResponseType>({
       queryKey: restaurantsService.queryKey(params),
       queryFn: () => restaurantsQuery(params),
+      staleTime: 500,
     });
   },
 };
@@ -41,11 +42,15 @@ export const useRestaurantsQuery = () => {
   const [searchParams] = useSearchParams();
 
   const page = Number(searchParams.get('page') ?? '1');
-  const celeb = searchParams.get('celeb') || undefined;
-  const category = searchParams.get('category') || undefined;
+  const celeb = searchParams.get('celeb') ?? undefined;
+  const category = searchParams.get('category') ?? undefined;
 
   return useSuspenseQuery(
-    restaurantsService.queryOptions({ page, celeb, category })
+    restaurantsService.queryOptions({
+      page,
+      celeb,
+      category,
+    })
   );
 };
 

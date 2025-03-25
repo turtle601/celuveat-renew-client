@@ -1,5 +1,6 @@
 import { PAGE_OFFSET } from '../../shared/constant/offset';
 import { API_URL } from '../../shared/constant/url';
+import { getQueryString } from '../../shared/lib/queryString';
 
 export interface RestaurantsQueryParams {
   page: number;
@@ -12,12 +13,14 @@ export const restaurantsQuery = async ({
   celeb,
   category,
 }: RestaurantsQueryParams) => {
-  const celebQueryString = celeb ? `&celeb=${celeb}` : '';
-  const categoryQueryString = category ? `&category=${category}` : '';
+  const queryString = getQueryString({
+    page: String(page),
+    offset: String(PAGE_OFFSET),
+    celeb,
+    category,
+  }).toString();
 
-  const response = await fetch(
-    `${API_URL}/restaurants?page=${page}&offset=${PAGE_OFFSET}${celebQueryString}${categoryQueryString}`
-  );
+  const response = await fetch(`${API_URL}/restaurants?${queryString}`);
 
   const data = await response.json();
 

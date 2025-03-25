@@ -3,10 +3,11 @@ import { borderRadius, color, spacer, Spacer } from 'ik-ui-library';
 import ModalHeader from './header';
 
 interface ModalContainerProps {
+  title: string;
   children: React.ReactNode;
 }
 
-function ModalContainer({ children }: ModalContainerProps) {
+function ModalContainer({ title, children }: ModalContainerProps) {
   return (
     <div
       css={css({
@@ -17,7 +18,7 @@ function ModalContainer({ children }: ModalContainerProps) {
         borderRadius: borderRadius.md,
       })}
     >
-      <ModalHeader />
+      <ModalHeader label={title} />
       <Spacer direction="vertical" space={spacer['spacing3']} />
       {children}
     </div>

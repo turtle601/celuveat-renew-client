@@ -6,6 +6,7 @@ import { ModalContainer } from '../shared/ui/modal';
 import Down from '../shared/assets/arrow/down.svg?react';
 
 import { FilterCelebrities } from '../features/celebrity/ui';
+import { FilterCategories } from '../features/categories/ui';
 
 function RestaurantFilterNav() {
   return (
@@ -22,7 +23,7 @@ function RestaurantFilterNav() {
           width: 'max-content',
         }}
         modalContent={
-          <ModalContainer>
+          <ModalContainer title={'어떤 셀럽이 다녀간 음식점을 찾고 계신가요?'}>
             <Suspense fallback={<div>로딩중</div>}>
               <FilterCelebrities />
             </Suspense>
@@ -39,9 +40,9 @@ function RestaurantFilterNav() {
           width: 'max-content',
         }}
         modalContent={
-          <ModalContainer>
+          <ModalContainer title={'어떤 카테고리의 음식점을 찾고 계신가요?'}>
             <Suspense fallback={<div>로딩중</div>}>
-              <FilterCelebrities />
+              <FilterCategories />
             </Suspense>
           </ModalContainer>
         }

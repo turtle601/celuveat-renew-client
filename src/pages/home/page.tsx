@@ -9,6 +9,9 @@ import { Header, Nav } from '../../widgets';
 import { RestaurantsCardGrid } from '../../features/restaurants/ui';
 import RestaurantFilterNav from '../../widgets/restaurantFilterNav';
 
+import { Map } from '../../entities/map';
+import { MapView, RestaurantMarkers } from '../../features/map';
+
 function Page() {
   return (
     <>
@@ -86,7 +89,10 @@ function Page() {
                 </Suspense>
               </Tab.Panel>
               <Tab.Panel>
-                <></>
+                <Map.Provider>
+                  <MapView />
+                  <RestaurantMarkers />
+                </Map.Provider>
               </Tab.Panel>
             </Tab.Panels>
           </div>

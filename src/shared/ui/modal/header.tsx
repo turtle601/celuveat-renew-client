@@ -10,7 +10,7 @@ function ModalHeader({ label }: ModalHeaderProps) {
       <div></div>
       <Text as="div" label={label} textWeight="bold" textSize="md" />
       <div>
-        <Modal.Toggle modalContent={null}>닫기</Modal.Toggle>
+        <Modal.Close>닫기</Modal.Close>
       </div>
     </Flex>
   );

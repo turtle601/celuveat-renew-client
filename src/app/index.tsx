@@ -3,7 +3,7 @@ import { Global } from '@emotion/react';
 import { getResetStyle } from '../shared/styles/reset';
 
 import { Root } from './router';
-import { QueryClientProvider } from './provider';
+import { ModalProvider, QueryClientProvider } from './provider';
 import { SidebarPortal, ModalPortal } from './portal';
 import { BrowserRouter } from 'react-router';
 
@@ -11,10 +11,12 @@ function App() {
   return (
     <QueryClientProvider>
       <BrowserRouter>
-        <Global styles={getResetStyle()} />
-        <Root />
+        <ModalProvider>
+          <Global styles={getResetStyle()} />
+          <Root />
+          <ModalPortal />
+        </ModalProvider>
         <SidebarPortal />
-        <ModalPortal />
       </BrowserRouter>
     </QueryClientProvider>
   );

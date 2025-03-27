@@ -18,7 +18,7 @@ function RestaurantFilterNav() {
         },
       }}
     >
-      <Modal.Toggle
+      <Modal.Open
         etcStyles={{
           width: 'max-content',
         }}
@@ -34,8 +34,8 @@ function RestaurantFilterNav() {
           <Text label="모든 셀럽" textWeight="bold" textSize="md" />
           <Down />
         </Flex>
-      </Modal.Toggle>
-      <Modal.Toggle
+      </Modal.Open>
+      <Modal.Open
         etcStyles={{
           width: 'max-content',
         }}
@@ -51,7 +51,7 @@ function RestaurantFilterNav() {
           <Text label="모든 카테고리" textWeight="bold" textSize="md" />
           <Down />
         </Flex>
-      </Modal.Toggle>
+      </Modal.Open>
     </Flex>
   );
 }

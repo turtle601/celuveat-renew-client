@@ -1,7 +1,15 @@
 import { Suspense } from 'react';
 import { css } from '@emotion/react';
 
-import { Container, Flex, Modal, Responsive, spacer, Tab } from 'ik-ui-library';
+import {
+  Container,
+  Flex,
+  Modal,
+  Responsive,
+  Spacer,
+  spacer,
+  Tab,
+} from 'ik-ui-library';
 
 import { breakPoint } from '../../shared/constant/breakpoint';
 
@@ -43,7 +51,7 @@ function Page() {
         <Flex
           etcStyles={{
             width: '100%',
-            padding: `0 ${spacer.spacing5}`,
+            padding: `0 ${spacer.spacing2}`,
           }}
         >
           <Responsive
@@ -111,7 +119,7 @@ function Page() {
                         id="map"
                         css={css({
                           width: '100%',
-                          height: '1000px',
+                          height: '75vh',
                         })}
                       ></div>
                       <Map.ModalContent />
@@ -125,6 +133,7 @@ function Page() {
           </div>
         </Flex>
       </Container>
+      <Spacer direction={'vertical'} space={spacer.spacing5} />
     </>
   );
 }

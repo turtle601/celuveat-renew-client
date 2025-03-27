@@ -7,8 +7,11 @@ import Down from '../shared/assets/arrow/down.svg?react';
 
 import { FilterCelebrities } from '../features/celebrity/ui';
 import { FilterCategories } from '../features/categories/ui';
+import { useSearchParams } from 'react-router';
 
 function RestaurantFilterNav() {
+  const [searchParams] = useSearchParams();
+
   return (
     <Flex
       etcStyles={{
@@ -31,7 +34,11 @@ function RestaurantFilterNav() {
         }
       >
         <Flex align="center" gap={'4px'}>
-          <Text label="모든 셀럽" textWeight="bold" textSize="md" />
+          <Text
+            label={searchParams.get('celeb') ?? '전체 셀럽'}
+            textWeight="bold"
+            textSize="md"
+          />
           <Down />
         </Flex>
       </Modal.Open>
@@ -48,7 +55,11 @@ function RestaurantFilterNav() {
         }
       >
         <Flex align="center" gap={'4px'}>
-          <Text label="모든 카테고리" textWeight="bold" textSize="md" />
+          <Text
+            label={searchParams.get('category') ?? '전체 카테고리'}
+            textWeight="bold"
+            textSize="md"
+          />
           <Down />
         </Flex>
       </Modal.Open>

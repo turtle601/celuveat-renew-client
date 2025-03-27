@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { css } from '@emotion/react';
 
-import { Container, Flex, Responsive, spacer, Tab } from 'ik-ui-library';
+import { Container, Flex, Modal, Responsive, spacer, Tab } from 'ik-ui-library';
 
 import { breakPoint } from '../../shared/constant/breakpoint';
 
@@ -10,7 +10,7 @@ import { RestaurantsCardGrid } from '../../features/restaurants/ui';
 import RestaurantFilterNav from '../../widgets/restaurantFilterNav';
 
 import { Map } from '../../entities/map';
-import { MapView, RestaurantMarkers } from '../../features/map';
+import { RestaurantMarkers } from '../../features/map';
 
 function Page() {
   return (
@@ -89,10 +89,37 @@ function Page() {
                 </Suspense>
               </Tab.Panel>
               <Tab.Panel>
-                <Map.Provider>
-                  <MapView />
-                  <RestaurantMarkers />
-                </Map.Provider>
+                <Modal.Provider
+                  isBackDropClose={false}
+                  contentDefaultStyles={{
+                    width: '100%',
+                    position: 'absolute',
+                    height: '200px',
+                    zIndex: 12,
+                    bottom: '12px',
+                  }}
+                >
+                  <Map.Provider>
+                    <div
+                      css={css({
+                        width: '100%',
+                        paddingTop: '1.5rem',
+                        position: 'relative',
+                      })}
+                    >
+                      <div
+                        id="map"
+                        css={css({
+                          width: '100%',
+                          height: '1000px',
+                        })}
+                      ></div>
+                      <Map.ModalContent />
+                    </div>
+
+                    <RestaurantMarkers />
+                  </Map.Provider>
+                </Modal.Provider>
               </Tab.Panel>
             </Tab.Panels>
           </div>

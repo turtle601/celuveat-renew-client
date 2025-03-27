@@ -1,16 +1,26 @@
+import { useCallback } from 'react';
 import ReactDOMServer from 'react-dom/server';
 
+import { useModal } from 'ik-ui-library';
+
 import { Marker } from '../../map/ui';
+
 import RestaurantMarkerView from './restaurantMarkerView';
 
 import type { Restaurant } from '../restaurants.type';
-import { useCallback } from 'react';
+import RestaurantCard from './restaurantCard';
 
 interface RestaurantMarkerProps {
   restaurant: Restaurant;
 }
 
 function RestaurantMarker({ restaurant }: RestaurantMarkerProps) {
+  const { open } = useModal();
+
+  const click = useCallback(() => {
+    open(<RestaurantCard restaurant={restaurant} />);
+  }, [open, restaurant]);
+
   const load = useCallback(
     (marker?: naver.maps.Marker) => {
       const htmlString = ReactDOMServer.renderToString(
@@ -67,6 +77,7 @@ function RestaurantMarker({ restaurant }: RestaurantMarkerProps) {
 
   return (
     <Marker
+      click={click}
       load={load}
       mouseover={mouseover}
       mouseout={mouseout}

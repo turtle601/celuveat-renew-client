@@ -4,13 +4,21 @@ import Overlay from './overlay';
 
 interface MarkerProps {
   load: (marker?: naver.maps.Marker) => void;
+  click?: (marker?: naver.maps.Marker) => void;
   mouseover?: (marker?: naver.maps.Marker) => void;
   mouseout?: (marker?: naver.maps.Marker) => void;
   tap?: (marker?: naver.maps.Marker) => void;
   options: naver.maps.MarkerOptions;
 }
 
-function Marker({ options, load, mouseout, mouseover, tap }: MarkerProps) {
+function Marker({
+  options,
+  load,
+  click,
+  mouseout,
+  mouseover,
+  tap,
+}: MarkerProps) {
   const [marker] = useState(
     () =>
       new naver.maps.Marker({
@@ -38,12 +46,19 @@ function Marker({ options, load, mouseout, mouseover, tap }: MarkerProps) {
       }
     });
 
+    const listener4 = naver.maps.Event.addListener(marker, 'click', () => {
+      if (click) {
+        click(marker);
+      }
+    });
+
     return () => {
       naver.maps.Event.removeListener(listener1);
       naver.maps.Event.removeListener(listener2);
       naver.maps.Event.removeListener(listener3);
+      naver.maps.Event.removeListener(listener4);
     };
-  }, [marker, mouseout, mouseover, tap]);
+  }, [marker, mouseout, mouseover, tap, click]);
 
   useEffect(() => {
     if (marker) {

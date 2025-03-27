@@ -15,7 +15,7 @@ function RestaurantCard({ restaurant }: RestaurantCardProps) {
       justify="space-between"
       etcStyles={{
         width: '100%',
-        height: '160px',
+        height: '200px',
         padding: '1.5rem',
       }}
     >

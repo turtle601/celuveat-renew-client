@@ -43,6 +43,7 @@ function RestaurantsCardGrid() {
                 {pageNumList.map((pageNum) => {
                   return (
                     <Pagination.NumBtn
+                      key={Number(pageNum)}
                       pageNum={pageNum}
                       externalOnClick={() => mutation(pageNum)}
                     />

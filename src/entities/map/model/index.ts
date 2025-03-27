@@ -1,3 +1,2 @@
-export { NaverMapContext } from './context';
-
-export * from './useNaverMap';
+export * from './context';
+export * from './hooks';

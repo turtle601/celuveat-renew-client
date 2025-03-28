@@ -7,13 +7,21 @@ import { restaurantsMock } from '../entities/restaurants/restaurants.mock';
 import { getCelebritiesMock } from '../entities/celebrities/celebrities.mock';
 import { getCategoriesMock } from '../entities/categories/categories.mock';
 
-import type { RestaurantsResponseType } from '../entities/restaurants/restaurants.type';
+import type { MapRestaurantsQueryParams } from '../entities/map/map.api';
+
+import type {
+  Restaurant,
+  RestaurantsResponseType,
+} from '../entities/restaurants/restaurants.type';
+
 import type { CelebritiesResponseType } from '../entities/celebrities';
 import type { CategoriesResponseType } from '../entities/categories';
+import type { MapRestaurantsResponseType } from '../entities/map/map.type';
 
 export const handlers = [
   http.get(`${API_URL}/restaurants`, ({ request }) => {
     const url = new URL(request.url);
+
     const pageNum = Number(url.searchParams.get('page'));
     const offSetNum = Number(url.searchParams.get('offset'));
 
@@ -54,6 +62,53 @@ export const handlers = [
   http.get(`${API_URL}/categories`, () => {
     return HttpResponse.json<CategoriesResponseType>({
       content: getCategoriesMock(),
+    });
+  }),
+
+  http.get(`${API_URL}/maps`, ({ request }) => {
+    const url = new URL(request.url);
+    const celeb = url.searchParams.get('celeb');
+
+    const filteredCelebRestaurant = celeb
+      ? restaurantsMock.filter((restaurant) => {
+          return restaurant.visitedCelebrities.some(
+            (visitedCeleb) => visitedCeleb.name === celeb
+          );
+        })
+      : restaurantsMock;
+
+    const category = url.searchParams.get('category');
+
+    const filteredCategoryRestaurant = category
+      ? filteredCelebRestaurant.filter((restaurant) => {
+          return restaurant.category === category;
+        })
+      : filteredCelebRestaurant;
+
+    const boundary = url.searchParams.get('boundary');
+
+    const isBoundary = (restaurant: Restaurant) => {
+      if (!boundary) return;
+
+      const boundaryParams = JSON.parse(
+        boundary
+      ) as MapRestaurantsQueryParams['boundary'];
+
+      return (
+        restaurant.latitude >= boundaryParams.min.lat &&
+        restaurant.latitude <= boundaryParams.max.lat &&
+        restaurant.longitude >= boundaryParams.min.lng &&
+        restaurant.longitude <= boundaryParams.max.lng
+      );
+    };
+
+    const filteredRestaurant = boundary
+      ? filteredCategoryRestaurant.filter(isBoundary)
+      : filteredCategoryRestaurant;
+
+    return HttpResponse.json<MapRestaurantsResponseType>({
+      content: filteredRestaurant,
+      size: filteredRestaurant.length,
     });
   }),
 ];

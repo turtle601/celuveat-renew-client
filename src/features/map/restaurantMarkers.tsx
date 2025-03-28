@@ -1,13 +1,13 @@
-import { useRestaurantsQuery } from '../../entities/restaurants';
-
 import { RestaurantMarker } from '../../entities/restaurants/ui';
 
+import { useMapRestaurantsQuery } from '../../entities/map';
+
 function RestaurantMarkers() {
-  const { data: restaurantsData } = useRestaurantsQuery();
+  const { data: mapRestaurantsData } = useMapRestaurantsQuery();
 
   return (
     <div>
-      {restaurantsData.content.map((restaurant) => {
+      {mapRestaurantsData?.content.map((restaurant) => {
         return <RestaurantMarker key={restaurant.id} restaurant={restaurant} />;
       })}
     </div>

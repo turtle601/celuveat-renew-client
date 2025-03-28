@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
 import {
   queryOptions as tsqQueryOptions,
@@ -61,23 +61,24 @@ export const useMapRestaurantsQuery = () => {
   const celeb = searchParams.get('celeb') ?? undefined;
   const category = searchParams.get('category') ?? undefined;
 
-  const debouncedSetBoundaryFn = debounce(() => {
+  const setBoundaryParams = useCallback(() => {
     if (nmap) {
       const boundaryParams = getBoundaryParams(nmap.getBounds());
       setBoundary(boundaryParams);
     }
-  }, 200);
+  }, [nmap]);
+
+  const debouncedSetBoundaryFn = useCallback(() => {
+    return debounce(setBoundaryParams, 200);
+  }, [setBoundaryParams]);
 
   useEffect(() => {
     nmap?.addListener('center_changed', debouncedSetBoundaryFn);
   }, [debouncedSetBoundaryFn, nmap]);
 
   useEffect(() => {
-    if (nmap) {
-      const boundaryParams = getBoundaryParams(nmap.getBounds());
-      setBoundary(boundaryParams);
-    }
-  }, [nmap]);
+    setBoundaryParams();
+  }, [setBoundaryParams]);
 
   return useQuery(
     mapRestaurantsService.queryOptions({

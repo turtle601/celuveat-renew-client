@@ -1,14 +1,13 @@
 import { useCallback } from 'react';
 import ReactDOMServer from 'react-dom/server';
-
 import { useModal } from 'ik-ui-library';
 
 import { Marker } from '../../map/ui';
 
+import RestaurantCard from './restaurantCard';
 import RestaurantMarkerView from './restaurantMarkerView';
 
 import type { Restaurant } from '../restaurants.type';
-import RestaurantCard from './restaurantCard';
 
 interface RestaurantMarkerProps {
   restaurant: Restaurant;

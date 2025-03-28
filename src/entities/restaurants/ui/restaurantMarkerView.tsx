@@ -5,17 +5,14 @@ import type { Restaurant } from '../restaurants.type';
 interface RestaurantMarkerViewProps {
   isHover?: boolean;
   restaurant: Restaurant;
-  onClick?: () => void;
 }
 
 function RestaurantMarkerView({
   restaurant,
   isHover = false,
-  onClick,
 }: RestaurantMarkerViewProps) {
   return (
     <div
-      onClick={onClick}
       className={isHover ? 'restaurant-marker_hover' : ''}
       style={{
         width: 'max-content',

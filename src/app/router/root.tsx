@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router';
 import { HomePage } from '../../pages/home';
-import { Pagination } from 'ik-ui-library';
+import PaginationProvider from '../provider/paginationProvider';
 
 function Root() {
   return (
@@ -8,9 +8,9 @@ function Root() {
       <Route
         path="/"
         element={
-          <Pagination.Provider>
+          <PaginationProvider>
             <HomePage />
-          </Pagination.Provider>
+          </PaginationProvider>
         }
       />
     </Routes>

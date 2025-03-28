@@ -1,8 +1,10 @@
-import { Marker, ModalContent } from './ui';
-import Provider from './ui/provider';
+import { Marker, ModalContent, Provider } from './ui';
 
 export const Map = {
   Provider,
   Marker,
   ModalContent,
 } as const;
+
+export * from './map.queries';
+export * from './map.type';

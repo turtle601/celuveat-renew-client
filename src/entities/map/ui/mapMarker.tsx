@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import Overlay from './overlay';
+import { useMapEventListener } from '../hooks';
 
 interface MarkerProps {
   load: (marker?: naver.maps.Marker) => void;
@@ -27,38 +28,29 @@ function Marker({
       })
   );
 
-  useEffect(() => {
-    const listener1 = naver.maps.Event.addListener(marker, 'mouseover', () => {
-      if (mouseover) {
-        mouseover(marker);
-      }
-    });
+  useMapEventListener(marker, 'mouseover', () => {
+    if (mouseover) {
+      mouseover(marker);
+    }
+  });
 
-    const listener2 = naver.maps.Event.addListener(marker, 'mouseout', () => {
-      if (mouseout) {
-        mouseout(marker);
-      }
-    });
+  useMapEventListener(marker, 'mouseout', () => {
+    if (mouseout) {
+      mouseout(marker);
+    }
+  });
 
-    const listener3 = naver.maps.Event.addListener(marker, 'tap', () => {
-      if (tap) {
-        tap(marker);
-      }
-    });
+  useMapEventListener(marker, 'tap', () => {
+    if (tap) {
+      tap(marker);
+    }
+  });
 
-    const listener4 = naver.maps.Event.addListener(marker, 'click', () => {
-      if (click) {
-        click(marker);
-      }
-    });
-
-    return () => {
-      naver.maps.Event.removeListener(listener1);
-      naver.maps.Event.removeListener(listener2);
-      naver.maps.Event.removeListener(listener3);
-      naver.maps.Event.removeListener(listener4);
-    };
-  }, [marker, mouseout, mouseover, tap, click]);
+  useMapEventListener(marker, 'click', () => {
+    if (click) {
+      click(marker);
+    }
+  });
 
   useEffect(() => {
     if (marker) {

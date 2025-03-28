@@ -10,11 +10,12 @@ import { queryClient } from '../../shared/lib/tanstack-query';
 import { useMap } from './model';
 import { mapRestaurantsQuery, MapRestaurantsQueryParams } from './map.api';
 import { getBoundaryParams } from './map.map';
-import type { MapRestaurantsResponseType } from './map.type';
 import { debounce } from '../../shared/lib/delay/debounce';
 
+import type { MapRestaurantsResponseType } from './map.type';
+
 export const keys = {
-  root: ['restaurant', 'map'],
+  root: ['maps'],
   queryParams: (params: MapRestaurantsQueryParams) => {
     return { ...params };
   },

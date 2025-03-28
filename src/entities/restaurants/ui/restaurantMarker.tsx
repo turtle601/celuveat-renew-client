@@ -16,49 +16,57 @@ interface RestaurantMarkerProps {
 function RestaurantMarker({ restaurant }: RestaurantMarkerProps) {
   const { open } = useModal();
 
-  const click = useCallback(() => {
-    open(<RestaurantCard restaurant={restaurant} />);
-  }, [open, restaurant]);
-
-  const load = useCallback(
+  const focus = useCallback(
     (marker?: naver.maps.Marker) => {
-      const htmlString = ReactDOMServer.renderToString(
-        <RestaurantMarkerView restaurant={restaurant} />
-      );
-
+      marker?.setZIndex(100);
       marker?.setIcon({
-        content: htmlString,
+        content: ReactDOMServer.renderToString(
+          <RestaurantMarkerView restaurant={restaurant} isHover />
+        ),
       });
     },
     [restaurant]
+  );
+
+  const unfocus = useCallback(
+    (marker?: naver.maps.Marker) => {
+      marker?.setZIndex(10);
+      marker?.setIcon({
+        content: ReactDOMServer.renderToString(
+          <RestaurantMarkerView restaurant={restaurant} />
+        ),
+      });
+    },
+    [restaurant]
+  );
+
+  const click = useCallback(
+    (marker?: naver.maps.Marker) => {
+      open(<RestaurantCard restaurant={restaurant} />);
+      focus(marker);
+    },
+    [focus, open, restaurant]
+  );
+
+  const load = useCallback(
+    (marker?: naver.maps.Marker) => {
+      unfocus(marker);
+    },
+    [unfocus]
   );
 
   const mouseover = useCallback(
     (marker?: naver.maps.Marker) => {
-      const htmlString = ReactDOMServer.renderToString(
-        <RestaurantMarkerView restaurant={restaurant} isHover />
-      );
-
-      marker?.setZIndex(100);
-      marker?.setIcon({
-        content: htmlString,
-      });
+      focus(marker);
     },
-    [restaurant]
+    [focus]
   );
 
   const mouseout = useCallback(
     (marker?: naver.maps.Marker) => {
-      const htmlString = ReactDOMServer.renderToString(
-        <RestaurantMarkerView restaurant={restaurant} />
-      );
-
-      marker?.setZIndex(10);
-      marker?.setIcon({
-        content: htmlString,
-      });
+      unfocus(marker);
     },
-    [restaurant]
+    [unfocus]
   );
 
   const tap = useCallback(
@@ -66,12 +74,12 @@ function RestaurantMarker({ restaurant }: RestaurantMarkerProps) {
       const isHover = marker?.getZIndex() === 100;
 
       if (isHover) {
-        mouseout(marker);
+        unfocus(marker);
       } else {
-        mouseover(marker);
+        focus(marker);
       }
     },
-    [mouseout, mouseover]
+    [focus, unfocus]
   );
 
   return (

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useSearchParams } from 'react-router';
 import {
   queryOptions as tsqQueryOptions,
@@ -13,6 +13,7 @@ import { getBoundaryParams } from './map.map';
 import { debounce } from '../../shared/lib/delay/debounce';
 
 import type { MapRestaurantsResponseType } from './map.type';
+import { getQueryString } from '../../shared/lib/queryString';
 
 export const keys = {
   root: ['maps'],
@@ -45,29 +46,26 @@ export const mapRestaurantsService = {
 
 export const useMapRestaurantsQuery = () => {
   const nmap = useMap();
-  const [searchParams] = useSearchParams();
-  const [boundary, setBoundary] = useState<
-    MapRestaurantsQueryParams['boundary']
-  >({
-    min: {
-      lat: 0,
-      lng: 0,
-    },
-    max: {
-      lat: 0,
-      lng: 0,
-    },
-  });
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const celeb = searchParams.get('celeb') ?? undefined;
   const category = searchParams.get('category') ?? undefined;
+  const boundary = searchParams.get('boudary') ?? undefined;
 
   const setBoundaryParams = useCallback(() => {
     if (nmap) {
       const boundaryParams = getBoundaryParams(nmap.getBounds());
-      setBoundary(boundaryParams);
+
+      setSearchParams(
+        getQueryString({
+          celeb,
+          category,
+          boundary: JSON.stringify(boundaryParams),
+        })
+      );
     }
-  }, [nmap]);
+  }, [category, celeb, nmap, setSearchParams]);
 
   const debouncedSetBoundaryFn = useCallback(() => {
     return debounce(setBoundaryParams, 200);
@@ -76,6 +74,12 @@ export const useMapRestaurantsQuery = () => {
   useEffect(() => {
     nmap?.addListener('center_changed', debouncedSetBoundaryFn);
   }, [debouncedSetBoundaryFn, nmap]);
+
+  useEffect(() => {
+    nmap?.addListener('click', () => {
+      console.log('이거');
+    });
+  }, [nmap]);
 
   useEffect(() => {
     setBoundaryParams();

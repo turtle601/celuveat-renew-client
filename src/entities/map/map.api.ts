@@ -2,18 +2,10 @@ import { API_URL } from '../../shared/constant/url';
 
 import { getQueryString } from '../../shared/lib/queryString';
 
-interface MapPosition {
-  lat: number;
-  lng: number;
-}
-
 export interface MapRestaurantsQueryParams {
   celeb?: string;
   category?: string;
-  boundary: {
-    min: MapPosition;
-    max: MapPosition;
-  };
+  boundary?: string;
 }
 
 export const mapRestaurantsQuery = async ({
@@ -24,7 +16,7 @@ export const mapRestaurantsQuery = async ({
   const queryString = getQueryString({
     celeb,
     category,
-    boundary: JSON.stringify(boundary),
+    boundary,
   }).toString();
 
   const response = await fetch(`${API_URL}/maps?${queryString}`);

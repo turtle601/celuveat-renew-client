@@ -1028,23 +1028,4 @@ export const restaurantsMock: Restaurant[] = [
     ],
     imgUrl: '',
   },
-  {
-    id: 821,
-    name: '호수집',
-    category: '닭요리',
-    roadAddress: '서울 중구 청파로 443',
-    phoneNumber: '02-392-0695',
-    naverMapUrl: 'https://naver.me/xbwnL3Un',
-    latitude: 37.5590188,
-    longitude: 126.9685812,
-    visitedCelebrities: [
-      {
-        id: 15,
-        name: '최자',
-        profileImageUrl:
-          'https://yt3.googleusercontent.com/h2LcPbyx1Y8LowtWTKNKbc7a_4FV8i2baCP3YjCHp5S5UoBVF1wr4XX03DMn8EjfvtS5yUztuw=s176-c-k-c0x00ffffff-no-rj',
-      },
-    ],
-    imgUrl: '',
-  },
 ];

@@ -1,1 +1,1 @@
-export { default as FilterCelebrities } from './filterCelebrities';
+export { default as OpenFilterCelebModal } from './openFilterCelebModal';

@@ -2,7 +2,8 @@ import { css } from '@emotion/react';
 
 import { borderRadius, Flex, Sidebar, spacer, Spacer } from 'ik-ui-library';
 
-import { SidebarNav } from '../../widgets';
+import { MapLinkButton } from '../../features/map';
+import { RestaurantsLinkButton } from '../../features/restaurants';
 
 import Logo from '../../shared/assets/logo/logo-icon.svg?react';
 import Prev from '../../shared/assets/arrow/prev.svg?react';
@@ -32,7 +33,10 @@ function SidebarPortal() {
           <Logo width={48} />
         </Flex>
         <Spacer direction="vertical" space={spacer['spacing5']} />
-        <SidebarNav />
+        <Flex direction="column" gap={'4px'}>
+          <RestaurantsLinkButton />
+          <MapLinkButton />
+        </Flex>
       </div>
     </Sidebar.Content>
   );

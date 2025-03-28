@@ -1,1 +1,1 @@
-export { default as FilterCategories } from './filterCategories';
+export { default as OpenFilterCategoryModal } from './openFilterCategoryModal';

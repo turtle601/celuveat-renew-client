@@ -11,6 +11,7 @@ import { useMap } from './model';
 import { mapRestaurantsQuery, MapRestaurantsQueryParams } from './map.api';
 import { getBoundaryParams } from './map.map';
 import type { MapRestaurantsResponseType } from './map.type';
+import { debounce } from '../../shared/lib/delay/debounce';
 
 export const keys = {
   root: ['restaurant', 'map'],
@@ -60,14 +61,16 @@ export const useMapRestaurantsQuery = () => {
   const celeb = searchParams.get('celeb') ?? undefined;
   const category = searchParams.get('category') ?? undefined;
 
+  const debouncedSetBoundaryFn = debounce(() => {
+    if (nmap) {
+      const boundaryParams = getBoundaryParams(nmap.getBounds());
+      setBoundary(boundaryParams);
+    }
+  }, 200);
+
   useEffect(() => {
-    nmap?.addListener('center_changed', () => {
-      if (nmap) {
-        const boundaryParams = getBoundaryParams(nmap.getBounds());
-        setBoundary(boundaryParams);
-      }
-    });
-  }, [nmap]);
+    nmap?.addListener('center_changed', debouncedSetBoundaryFn);
+  }, [debouncedSetBoundaryFn, nmap]);
 
   useEffect(() => {
     if (nmap) {

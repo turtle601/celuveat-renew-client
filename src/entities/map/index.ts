@@ -1,6 +1,6 @@
-import Provider from './model/provider';
+import Provider from '../../shared/ui/map/model/provider';
 
-import { ModalContent } from './ui';
+import { ModalContent } from '../../shared/ui/map/ui';
 
 export const Map = {
   Provider,

@@ -37,7 +37,7 @@ function MapPage() {
                 height: '75vh',
               })}
             ></div>
-            <Map.ModalContent />
+            <Map.Content />
           </div>
           <RestaurantMarkers />
         </Modal.Provider>

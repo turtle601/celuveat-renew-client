@@ -7,7 +7,7 @@ import {
 
 import { queryClient } from '../../shared/lib/tanstack-query';
 
-import { useMap } from './model';
+import { useMap } from '../../shared/ui/map/model';
 import { mapRestaurantsQuery, MapRestaurantsQueryParams } from './map.api';
 import { getBoundaryParams } from './map.map';
 import { debounce } from '../../shared/lib/delay/debounce';

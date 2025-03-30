@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { NaverMapContext } from '../model';
+import { NaverMapContext } from '.';
 
 interface MapProviderProps {
   children: React.ReactNode;

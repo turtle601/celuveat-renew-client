@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { borderRadius, Center, color, Modal, useModal } from 'ik-ui-library';
 
-import Down from '../../../shared/assets/arrow/down.svg?react';
+import Down from '../../../assets/arrow/down.svg?react';
 
 function ModalContent() {
   const { isOpen, content } = useModal();

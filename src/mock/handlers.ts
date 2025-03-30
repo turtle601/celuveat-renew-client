@@ -7,8 +7,6 @@ import { restaurantsMock } from '../entities/restaurants/restaurants.mock';
 import { getCelebritiesMock } from '../entities/celebrities/celebrities.mock';
 import { getCategoriesMock } from '../entities/categories/categories.mock';
 
-import type { MapRestaurantsQueryParams } from '../entities/map/map.api';
-
 import type {
   Restaurant,
   RestaurantsResponseType,
@@ -90,21 +88,21 @@ export const handlers = [
     const isBoundary = (restaurant: Restaurant) => {
       if (!boundary) return;
 
-      const boundaryParams = JSON.parse(
-        boundary
-      ) as MapRestaurantsQueryParams['boundary'];
+      const boundaryParams = JSON.parse(decodeURIComponent(boundary));
 
       return (
-        restaurant.latitude >= boundaryParams.min.lat &&
-        restaurant.latitude <= boundaryParams.max.lat &&
-        restaurant.longitude >= boundaryParams.min.lng &&
-        restaurant.longitude <= boundaryParams.max.lng
+        restaurant.latitude > boundaryParams.min.lat &&
+        restaurant.latitude < boundaryParams.max.lat &&
+        restaurant.longitude > boundaryParams.min.lng &&
+        restaurant.longitude < boundaryParams.max.lng
       );
     };
 
     const filteredRestaurant = boundary
       ? filteredCategoryRestaurant.filter(isBoundary)
       : filteredCategoryRestaurant;
+
+    console.log(filteredRestaurant, 'filteredRestaurant');
 
     return HttpResponse.json<MapRestaurantsResponseType>({
       content: filteredRestaurant,

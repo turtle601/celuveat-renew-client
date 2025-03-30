@@ -15,8 +15,8 @@ import { debounce } from '../../shared/lib/delay/debounce';
 import type { MapRestaurantsResponseType } from './map.type';
 import { getQueryString } from '../../shared/lib/queryString';
 
-import Marker from '../marker/model/marker';
-import { useRestaurantsMarkersStore } from '../marker';
+import Marker from '../../shared/ui/marker/model/marker';
+import { useRestaurantsMarkersStore } from '../../shared/ui/marker';
 
 export const keys = {
   root: ['maps'],

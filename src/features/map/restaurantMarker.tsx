@@ -3,13 +3,13 @@ import ReactDOMServer from 'react-dom/server';
 
 import { useModal } from 'ik-ui-library';
 
-import Marker from '../../entities/marker/model/marker';
+import Marker from '../../shared/ui/marker/model/marker';
 import { RestaurantCard } from '../../entities/restaurants';
 import RestaurantMarkerView from '../../entities/restaurants/ui/restaurantMarkerView';
-import Overlay from '../../entities/marker/ui/overlay';
-import EventTarget from '../../entities/marker/ui/eventTarget';
+import Overlay from '../../shared/ui/marker/ui/overlay';
+import EventTarget from '../../shared/ui/marker/ui/eventTarget';
 
-import { useRestaurantsMarkersStore } from '../../entities/marker';
+import { useRestaurantsMarkersStore } from '../../shared/ui/marker';
 
 import type { Restaurant } from '../../entities/restaurants/restaurants.type';
 

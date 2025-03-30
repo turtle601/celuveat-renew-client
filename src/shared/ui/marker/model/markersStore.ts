@@ -1,4 +1,4 @@
-import ExternalStore from '../../../shared/store/externalStore';
+import ExternalStore from '../../../store/externalStore';
 import Marker from './marker';
 import Markers, { MarkerSnapshot } from './markers';
 

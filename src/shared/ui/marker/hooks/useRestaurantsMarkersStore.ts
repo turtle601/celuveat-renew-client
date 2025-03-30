@@ -3,7 +3,7 @@ import { useSyncExternalStore } from 'react';
 import { MarkerSnapshot } from '../model/markers';
 import MarkersStore from '../model/markersStore';
 
-import type { Restaurant } from '../../restaurants/restaurants.type';
+import type { Restaurant } from '../../../../entities/restaurants/restaurants.type';
 
 const markersStore = new MarkersStore<Restaurant>();
 

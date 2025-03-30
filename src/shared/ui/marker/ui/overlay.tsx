@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-import { useMap } from '../../map/model';
+import { useMap } from '../../../../entities/map/model';
 
 import Marker from '../model/marker';
 

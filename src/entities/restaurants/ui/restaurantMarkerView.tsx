@@ -1,6 +1,6 @@
 import { borderRadius, color } from 'ik-ui-library';
 
-import Marker from '../../marker/model/marker';
+import Marker from '../../../shared/ui/marker/model/marker';
 
 import type { Restaurant } from '../restaurants.type';
 

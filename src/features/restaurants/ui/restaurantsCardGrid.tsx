@@ -1,4 +1,6 @@
-import { Center, Flex, Grid, Pagination, spacer, Spacer } from 'ik-ui-library';
+import { Center, Flex, Grid, spacer, Spacer } from 'ik-ui-library';
+
+import { Pagination } from '../../../shared/ui/pagination';
 
 import { RestaurantCard } from '../../../entities/restaurants/ui';
 

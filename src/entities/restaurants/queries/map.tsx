@@ -87,6 +87,17 @@ export const useMapRestaurantsQuery = () => {
 
   const { mapBounds } = useMapIdle({ action: setMapCenterParams });
 
+  useEffect(() => {
+    nmap?.setCenter(
+      new naver.maps.LatLng(
+        Number(searchParams['lat']),
+        Number(searchParams['lng'])
+      )
+    );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nmap]);
+
   return useQuery(
     restaurantsMarkersService.queryOptions({
       celeb: searchParams['celeb'],

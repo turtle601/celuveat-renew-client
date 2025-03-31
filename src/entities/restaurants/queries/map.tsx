@@ -15,6 +15,7 @@ import {
   type MapRestaurantsQueryParams,
 } from '../api';
 import { getBoundaryParams } from '../mapping';
+import { DEFAULT_COODINATE } from '../../../shared/constant/map';
 
 export const keys = {
   root: ['map'],
@@ -90,8 +91,8 @@ export const useMapRestaurantsQuery = () => {
   useEffect(() => {
     nmap?.setCenter(
       new naver.maps.LatLng(
-        Number(searchParams['lat']),
-        Number(searchParams['lng'])
+        Number(searchParams['lat'] ?? DEFAULT_COODINATE.lat),
+        Number(searchParams['lng'] ?? DEFAULT_COODINATE.lng)
       )
     );
 

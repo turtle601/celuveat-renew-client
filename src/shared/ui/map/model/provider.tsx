@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { NaverMapContext } from '.';
+import { DEFAULT_COODINATE } from '../../../constant/map';
 
 interface MapProviderProps {
   children: React.ReactNode;
@@ -11,7 +12,10 @@ function Provider({ children }: MapProviderProps) {
 
   useEffect(() => {
     const mapInstance = new naver.maps.Map('map', {
-      center: new naver.maps.LatLng(37.511337, 127.012084),
+      center: new naver.maps.LatLng(
+        DEFAULT_COODINATE.lat,
+        DEFAULT_COODINATE.lng
+      ),
       zoom: 13,
     });
 

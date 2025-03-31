@@ -3,6 +3,7 @@ import { Center, Flex, Grid, spacer, Spacer } from 'ik-ui-library';
 import { Pagination } from '../../../shared/ui/pagination';
 
 import { RestaurantCard } from '../../../entities/restaurants/ui';
+import RestaurantsEmpty from './restaurantsEmpty';
 
 import {
   useRestaurantPageMutation,
@@ -14,6 +15,10 @@ function RestaurantsCardGrid() {
 
   const { mutation, prevPageMutation, nextPageMutation } =
     useRestaurantPageMutation();
+
+  if (restaurantsData.content.length === 0) {
+    return <RestaurantsEmpty />;
+  }
 
   return (
     <>

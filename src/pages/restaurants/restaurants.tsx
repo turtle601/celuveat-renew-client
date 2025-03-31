@@ -6,10 +6,11 @@ import { breakPoint } from '../../shared/constant/breakpoint';
 import { RestaurantsCardGrid } from '../../features/restaurants/ui';
 import { OpenFilterCelebModal } from '../../features/celebrity/ui';
 import { OpenFilterCategoryModal } from '../../features/categories/ui';
+import { Skelton } from '../../widgets/skelton';
 
 function RestaurantsPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Skelton.Home />}>
       <Responsive
         defaultStyles={{
           width: '100%',

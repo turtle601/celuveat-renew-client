@@ -5,6 +5,9 @@ import Star from '../../../shared/assets/etc/star.svg?react';
 
 import type { Restaurant } from '../restaurants.type';
 
+import CustomImage from '../../../shared/ui/image';
+import { FALLBACK_IMG_URL } from '../../../shared/constant/url';
+
 interface RestaurantCardProps {
   restaurant: Restaurant;
 }
@@ -68,13 +71,14 @@ function RestaurantCard({ restaurant }: RestaurantCardProps) {
           >{`${restaurant.visitedCelebrities[0].name} 외 ${restaurant.visitedCelebrities.length}명 추천`}</span>
         </Flex>
       </Flex>
-      <img
-        css={css({
+      <CustomImage
+        etcStyles={{
           width: '120px',
           height: 'auto',
           objectFit: 'cover',
           borderRadius: '4px',
-        })}
+        }}
+        fallbackSrc={FALLBACK_IMG_URL}
         src={restaurant.imgUrl}
         alt={`${restaurant.name}의 음식점 이미지`}
       />

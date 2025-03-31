@@ -1,6 +1,7 @@
 import React from 'react';
 import { getMakePageNumList } from './lib';
-import { useSearchParams } from 'react-router';
+
+import { useCustomSearchParams } from '../../hooks';
 
 interface IChildrenParams {
   pageNumList: number[];
@@ -19,9 +20,9 @@ export interface IBtnContainerProps {
 }
 
 function BtnContainer({ totalPage, range, children }: IBtnContainerProps) {
-  const [searchParams] = useSearchParams();
+  const { searchParams } = useCustomSearchParams();
 
-  const currentPage = Number(searchParams.get('page') ?? 1);
+  const currentPage = Number(searchParams['page'] ?? 1);
 
   const isNextDisabled = currentPage === totalPage;
   const isPrevDisabled = currentPage === 1;

@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { useSearchParams } from 'react-router';
+
 import { Flex, Modal, Text } from 'ik-ui-library';
 
 import { ModalContainer } from '../../../shared/ui/modal';
@@ -7,9 +7,10 @@ import { ModalContainer } from '../../../shared/ui/modal';
 import Down from '../../../shared/assets/arrow/down.svg?react';
 
 import FilterCelebrities from './filterCelebrities';
+import { useCustomSearchParams } from '../../../shared/hooks';
 
 function OpenFilterCelebModal() {
-  const [searchParams] = useSearchParams();
+  const { searchParams } = useCustomSearchParams();
 
   return (
     <Modal.Open
@@ -26,7 +27,7 @@ function OpenFilterCelebModal() {
     >
       <Flex align="center" gap={'4px'}>
         <Text
-          label={searchParams.get('celeb') ?? '전체 셀럽'}
+          label={searchParams['celeb'] ?? '전체 셀럽'}
           textWeight="bold"
           textSize="md"
         />

@@ -1,4 +1,3 @@
-import { useSearchParams } from 'react-router';
 import { useCallback, useEffect, useState } from 'react';
 import {
   queryOptions as tsqQueryOptions,
@@ -6,16 +5,16 @@ import {
 } from '@tanstack/react-query';
 
 import { useMap } from '../../../shared/ui/map/model';
-import { getQueryString } from '../../../shared/lib/queryString';
 import { queryClient } from '../../../shared/lib/tanstack-query';
+import { useRestaurantsMarkersStore } from '../../../shared/ui/marker';
+import { useCustomSearchParams } from '../../../shared/hooks';
+import Marker from '../../../shared/ui/marker/model/marker';
 
 import {
   mapRestaurantMarkersQuery,
   type MapRestaurantsQueryParams,
 } from '../api';
 import { getBoundaryParams } from '../mapping';
-import { useRestaurantsMarkersStore } from '../../../shared/ui/marker';
-import Marker from '../../../shared/ui/marker/model/marker';
 
 export const keys = {
   root: ['map'],
@@ -47,34 +46,6 @@ export const restaurantsMarkersService = {
   },
 };
 
-export const useMapParams = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const celebParams = searchParams.get('celeb') ?? undefined;
-  const categoryParams = searchParams.get('category') ?? undefined;
-  const latParams = String(searchParams.get('lat') ?? 37.511337);
-  const lngParams = String(searchParams.get('lng') ?? 127.012084);
-
-  const setMapParams = ({ lat, lng }: { lat?: string; lng?: string }) => {
-    setSearchParams(
-      getQueryString({
-        celeb: celebParams,
-        category: categoryParams,
-        lat: lat ?? latParams,
-        lng: lng ?? lngParams,
-      })
-    );
-  };
-
-  return {
-    celebParams,
-    categoryParams,
-    latParams,
-    lngParams,
-    setMapParams,
-  };
-};
-
 export const useMapIdle = ({ action }: { action?: () => void }) => {
   const nmap = useMap();
   const [mapBounds, setMapBounds] = useState<naver.maps.Bounds | undefined>();
@@ -84,8 +55,7 @@ export const useMapIdle = ({ action }: { action?: () => void }) => {
 
     setMapBounds(nmap.getBounds());
     action?.();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nmap]);
+  }, [action, nmap]);
 
   useEffect(() => {
     if (!nmap) return;
@@ -100,7 +70,7 @@ export const useMapIdle = ({ action }: { action?: () => void }) => {
 export const useMapRestaurantsQuery = () => {
   const nmap = useMap();
 
-  const { celebParams, categoryParams, setMapParams } = useMapParams();
+  const { searchParams, setSearchParams } = useCustomSearchParams();
 
   const setMapCenterParams = useCallback(() => {
     if (!nmap) return;
@@ -109,18 +79,18 @@ export const useMapRestaurantsQuery = () => {
     const lat = String(center.y);
     const lng = String(center.x);
 
-    setMapParams({
+    setSearchParams({
       lat,
       lng,
     });
-  }, [nmap, setMapParams]);
+  }, [nmap, setSearchParams]);
 
   const { mapBounds } = useMapIdle({ action: setMapCenterParams });
 
   return useQuery(
     restaurantsMarkersService.queryOptions({
-      celeb: celebParams,
-      category: categoryParams,
+      celeb: searchParams['celeb'],
+      category: searchParams['category'],
       boundary: encodeURIComponent(
         JSON.stringify(getBoundaryParams(mapBounds))
       ),
@@ -154,8 +124,7 @@ export const useRestaurantMarkers = () => {
 
       markerStore.set(markers);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, map]);
+  }, [data, map, markerStore]);
 
   return {
     markerMap: snapshot.markerMap,

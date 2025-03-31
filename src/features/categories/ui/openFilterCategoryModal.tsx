@@ -1,15 +1,16 @@
 import { Suspense } from 'react';
-import { useSearchParams } from 'react-router';
+
 import { Flex, Modal, Text } from 'ik-ui-library';
 
 import { ModalContainer } from '../../../shared/ui/modal';
+import { useCustomSearchParams } from '../../../shared/hooks';
 
 import Down from '../../../shared/assets/arrow/down.svg?react';
 
 import FilterCategories from './filterCategories';
 
 function OpenFilterCategoryModal() {
-  const [searchParams] = useSearchParams();
+  const { searchParams } = useCustomSearchParams();
 
   return (
     <Modal.Open
@@ -26,7 +27,7 @@ function OpenFilterCategoryModal() {
     >
       <Flex align="center" gap={'4px'}>
         <Text
-          label={searchParams.get('category') ?? '전체 카테고리'}
+          label={searchParams['category'] ?? '전체 카테고리'}
           textWeight="bold"
           textSize="md"
         />

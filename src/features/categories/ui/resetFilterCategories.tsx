@@ -1,13 +1,14 @@
-import { useSearchParams } from 'react-router';
 import { borderRadius, Center, color, Modal, Text } from 'ik-ui-library';
+
+import { useCustomSearchParams } from '../../../shared/hooks';
 
 import { useFilterCategoryMutation } from '../../../entities/categories';
 
 function ResetFilterCategories() {
   const { filter } = useFilterCategoryMutation();
 
-  const [searchParams] = useSearchParams();
-  const isActive = searchParams.get('category') === null;
+  const { searchParams } = useCustomSearchParams();
+  const isActive = !searchParams['category'];
 
   return (
     <Modal.Close

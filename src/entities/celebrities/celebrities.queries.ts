@@ -5,11 +5,11 @@ import {
   useSuspenseQuery,
 } from '@tanstack/react-query';
 
+import { useCustomSearchParams } from '../../shared/hooks';
+
 import { celebritiesQuery } from './celebrities.api';
 
 import type { CelebritiesResponseType } from './celebrities.type';
-import { useSearchParams } from 'react-router';
-import { getQueryString } from '../../shared/lib/queryString';
 
 export const keys = {
   root: ['celebrities'],
@@ -38,31 +38,19 @@ export const useCelebritiesQuery = () => {
 };
 
 export const useFilterCelebMutation = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const categoryParams = searchParams.get('category') ?? undefined;
-  const latParams = String(searchParams.get('lat') ?? 37.511337);
-  const lngParams = String(searchParams.get('lng') ?? 127.012084);
+  const { setSearchParams } = useCustomSearchParams();
 
   const restaurantMutation = (celeb?: string) => {
-    setSearchParams(
-      getQueryString({
-        page: '1',
-        category: categoryParams,
-        celeb: celeb,
-      })
-    );
+    setSearchParams({
+      page: '1',
+      celeb: celeb,
+    });
   };
 
   const mapMutation = (celeb?: string) => {
-    setSearchParams(
-      getQueryString({
-        celeb: celeb,
-        category: categoryParams,
-        lat: latParams,
-        lng: lngParams,
-      })
-    );
+    setSearchParams({
+      celeb,
+    });
   };
 
   const filter = (celeb?: string) => {

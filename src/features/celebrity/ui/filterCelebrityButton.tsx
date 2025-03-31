@@ -1,5 +1,6 @@
-import { useSearchParams } from 'react-router';
 import { borderRadius, Center, color, Modal, Text } from 'ik-ui-library';
+
+import { useCustomSearchParams } from '../../../shared/hooks';
 
 import {
   Celebrity,
@@ -13,8 +14,8 @@ interface FilterCelebrityButtonProps {
 function FilterCelebrityButton({ celeb }: FilterCelebrityButtonProps) {
   const { filter } = useFilterCelebMutation();
 
-  const [searchParams] = useSearchParams();
-  const isActive = searchParams.get('celeb') === celeb.name;
+  const { searchParams } = useCustomSearchParams();
+  const isActive = searchParams['celeb'] === celeb.name;
 
   const handleClick = () => {
     filter(celeb.name);

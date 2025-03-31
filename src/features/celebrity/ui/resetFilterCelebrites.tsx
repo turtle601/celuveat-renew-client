@@ -1,11 +1,13 @@
 import { borderRadius, Center, color, Modal, Text } from 'ik-ui-library';
+
+import { useCustomSearchParams } from '../../../shared/hooks';
 import { useFilterCelebMutation } from '../../../entities/celebrities';
-import { useSearchParams } from 'react-router';
 
 function ResetFilterCelebrities() {
   const { filter } = useFilterCelebMutation();
-  const [searchParams] = useSearchParams();
-  const isActive = searchParams.get('celeb') === null;
+  const { searchParams } = useCustomSearchParams();
+
+  const isActive = !searchParams['celeb'];
 
   return (
     <Modal.Close

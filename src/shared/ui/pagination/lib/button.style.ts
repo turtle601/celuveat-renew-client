@@ -43,6 +43,9 @@ export const getDisableBtnStyle = (): CSSObject => {
   return {
     '&:disabled': {
       cursor: 'not-allowed',
+      '& path': {
+        fill: color.gray200,
+      },
     },
   };
 };

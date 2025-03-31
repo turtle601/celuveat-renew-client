@@ -1,5 +1,4 @@
 import { ComponentPropsWithoutRef, CSSProperties, useState } from 'react';
-import { paintSkeleton } from '../styles/animation';
 
 interface CustomImageProps extends ComponentPropsWithoutRef<'img'> {
   src: string;
@@ -16,14 +15,13 @@ function CustomImage({
   ...attribute
 }: CustomImageProps) {
   const [imgSrc, setImgSrc] = useState(src || fallbackSrc);
-  const [isLoading, setIsLoading] = useState(false);
+  const [, setIsLoading] = useState(false);
 
-  const loadStyle = isLoading ? paintSkeleton() : {};
+  // const loadStyle = isLoading ? paintSkeleton() : {};
 
   return (
     <img
       css={{
-        ...loadStyle,
         ...etcStyles,
       }}
       src={imgSrc}

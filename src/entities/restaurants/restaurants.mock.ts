@@ -551,8 +551,7 @@ export const restaurantsMock: Restaurant[] = [
           'https://yt3.googleusercontent.com/CDluFKwVxooXKsEa9WhPkBk2FGOnI8_qKFsMhr6GkAQj3JSrc-OhnwxcTM6hUGoBzcGgqB2Tow=s160-c-k-c0x00ffffff-no-rj',
       },
     ],
-    imgUrl:
-      'https://mblogthumb-phinf.pstatic.net/MjAyNDA4MTFfMTQ0/MDAxNzIzMzUzNzg0MTI1.ZBbHg1-gXSSwvbYoK3cPkmLcAuwWRkiNDUIEYPHzLwUg.J9y_WyD5Q97bmnNwed5-JCeBMzA0_f_8MwL9BuOhXRMg.JPEG/IMG_0895.JPG?type=w800',
+    imgUrl: '',
   },
   {
     id: 823,
@@ -590,8 +589,7 @@ export const restaurantsMock: Restaurant[] = [
           'https://yt3.googleusercontent.com/h2LcPbyx1Y8LowtWTKNKbc7a_4FV8i2baCP3YjCHp5S5UoBVF1wr4XX03DMn8EjfvtS5yUztuw=s176-c-k-c0x00ffffff-no-rj',
       },
     ],
-    imgUrl:
-      'https://blog.kakaocdn.net/dn/B1jBU/btr3bpqySrh/q6CrJFqgzPOUw3T1TQLPe0/img.jpg',
+    imgUrl: '',
   },
   {
     id: 708,

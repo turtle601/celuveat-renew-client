@@ -16,6 +16,7 @@ function RestaurantCard({ restaurant }: RestaurantCardProps) {
   return (
     <Flex
       justify="space-between"
+      gap={spacer['spacing2']}
       etcStyles={{
         width: '100%',
         height: '180px',
@@ -74,7 +75,7 @@ function RestaurantCard({ restaurant }: RestaurantCardProps) {
       <CustomImage
         etcStyles={{
           width: '120px',
-          height: 'auto',
+          height: '100%',
           objectFit: 'cover',
           borderRadius: '4px',
         }}

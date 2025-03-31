@@ -46,5 +46,9 @@ export const getResetStyle = () => {
       borderCollapse: 'collapse',
       borderSpacing: 0,
     },
+    a: {
+      textDecoration: 'none',
+      color: 'inherit',
+    },
   });
 };

@@ -473,7 +473,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 1002,
     name: '투아투아',
-    category: '베이커리',
+    category: '커피/디저트',
     roadAddress: '서울 강남구 압구정로48길 34 1층',
     phoneNumber: '080-1234-5678',
     naverMapUrl: 'https://naver.me/x2haMsnD',
@@ -498,7 +498,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 979,
     name: '슈보 카가리',
-    category: '일식당',
+    category: '일식',
     roadAddress: '서울 강남구 선릉로148길 52-5 2층(청담동)',
     phoneNumber: '0507-1393-9588',
     naverMapUrl: 'https://naver.me/F9VvsAKD',
@@ -518,7 +518,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 977,
     name: '제스트',
-    category: '바(BAR)',
+    category: '주점',
     roadAddress: '서울 강남구 도산대로55길 26 하늘빌딩 1층',
     phoneNumber: '',
     naverMapUrl: 'https://naver.me/5Gyhenvk',
@@ -537,7 +537,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 974,
     name: '사라우츠 ZARAUTZ',
-    category: '스페인음식',
+    category: '세계음식',
     roadAddress: '서울 강남구 도산대로51길 33 2층 사라우츠 / 2층 미성양꼬치',
     phoneNumber: '0507-1350-7859',
     naverMapUrl: 'https://naver.me/FRctMdEr',
@@ -557,7 +557,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 823,
     name: '영동포차나',
-    category: '태국음식',
+    category: '세계음식',
     roadAddress: '서울 강남구 언주로148길 14 나동 2층 208호',
     phoneNumber: '0507-1355-4883',
     naverMapUrl: 'https://naver.me/GYTX4Uif',
@@ -576,7 +576,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 813,
     name: '보보식당',
-    category: '중식당',
+    category: '중식',
     roadAddress: '서울 강남구 언주로174길 30 로빈명품관 1층 103호',
     phoneNumber: '0507-1346-7436',
     naverMapUrl: 'https://naver.me/5hEsSMXI',
@@ -596,7 +596,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 708,
     name: '우정',
-    category: '육류,고기요리',
+    category: '고기',
     roadAddress: '서울 강남구 도산대로55길 23 1층 우정',
     phoneNumber: '0507-1392-1808',
     naverMapUrl: 'https://naver.me/5LAxn53L',
@@ -616,7 +616,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 666,
     name: '스시스미레',
-    category: '초밥,롤',
+    category: '일식',
     roadAddress: '서울 강남구 도산대로55길 18 4층',
     phoneNumber: '02-547-8807',
     naverMapUrl:
@@ -637,7 +637,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 513,
     name: '대막',
-    category: '일식당',
+    category: '일식',
     roadAddress: '서울 강남구 압구정로46길 75 , 1층',
     phoneNumber: '0507-1403-5056',
     naverMapUrl: 'https://naver.me/FFviHZGz',
@@ -656,7 +656,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 471,
     name: '영동장어',
-    category: '장어,먹장어요리',
+    category: '한식',
     roadAddress: '서울 강남구 언주로148길 8',
     phoneNumber: '02-3448-9991',
     naverMapUrl: 'https://naver.me/GMRvF6XM',
@@ -676,7 +676,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 984,
     name: '스시이젠',
-    category: '초밥,롤',
+    category: '일식',
     roadAddress: '서울 용산구 한강대로 95 지하2층 247호',
     phoneNumber: '02-797-3174',
     naverMapUrl: 'https://naver.me/5cTkgm2w',
@@ -702,7 +702,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 821,
     name: '호수집',
-    category: '닭요리',
+    category: '고기',
     roadAddress: '서울 중구 청파로 443',
     phoneNumber: '02-392-0695',
     naverMapUrl: 'https://naver.me/xbwnL3Un',
@@ -722,7 +722,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 707,
     name: '유즈라멘',
-    category: '일본식라면',
+    category: '일식',
     roadAddress: '서울 중구 만리재로 217',
     phoneNumber: '070-4177-0365',
     naverMapUrl: 'https://naver.me/G14FdoiO',
@@ -748,7 +748,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 528,
     name: '럭키호프',
-    category: '맥주,호프',
+    category: '주점',
     roadAddress: '서울 용산구 한강대로15길 19-4',
     phoneNumber: '0507-1337-1519',
     naverMapUrl: 'https://naver.me/GMvn6sbX',
@@ -800,7 +800,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 655,
     name: '정성손칼국수',
-    category: '칼국수,만두',
+    category: '면',
     roadAddress: '서울 용산구 한강대로48길 18',
     phoneNumber: '02-793-9898',
     naverMapUrl: 'https://naver.me/F1eml5OX',
@@ -840,7 +840,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 642,
     name: '토속촌 삼계탕',
-    category: '백숙,삼계탕',
+    category: '한식',
     roadAddress: '서울 종로구 자하문로5길 5 토속촌',
     phoneNumber: '02-737-7444',
     naverMapUrl: 'https://naver.me/I54QQ5ub',
@@ -861,7 +861,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 625,
     name: '어항로',
-    category: '요리주점',
+    category: '주점',
     roadAddress: '서울 용산구 한강대로52길 17-4',
     phoneNumber: '0507-1491-1185',
     naverMapUrl: 'https://naver.me/IFIRZH0R',
@@ -881,7 +881,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 989,
     name: '정대',
-    category: '일식당',
+    category: '일식',
     roadAddress: '서울 종로구 경희궁길 36 2층 (신문로2가, 경희당빌딩)',
     phoneNumber: '02-737-3204',
     naverMapUrl: 'https://naver.me/FsKSwNK2',
@@ -901,7 +901,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 976,
     name: '롯데호텔서울 라세느',
-    category: '뷔페',
+    category: '커피/디저트',
     roadAddress: '서울 중구 을지로 30',
     phoneNumber: '02-317-7171',
     naverMapUrl: 'https://naver.me/GhE8Eumm',
@@ -921,7 +921,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 954,
     name: '소공바지락칼국수',
-    category: '칼국수,만두',
+    category: '면',
     roadAddress: '서울 중구 남대문로 64-1',
     phoneNumber: 'null',
     naverMapUrl: 'https://naver.me/GFpAjuAu',
@@ -941,7 +941,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 953,
     name: '란주칼면',
-    category: '중식당',
+    category: '중식',
     roadAddress: '서울 중구 소공로 64 1층 란주칼면',
     phoneNumber: '02-779-4800',
     naverMapUrl: 'https://naver.me/G7KDonc6',
@@ -961,7 +961,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 895,
     name: '대우호프',
-    category: '맥주,호프',
+    category: '주점',
     roadAddress: '서울 용산구 후암로 95',
     phoneNumber: '02-754-6357',
     naverMapUrl: 'https://naver.me/GJrTTqQi',
@@ -980,7 +980,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 894,
     name: '유가',
-    category: '중식당',
+    category: '중식',
     roadAddress: '서울 중구 퇴계로12길 68',
     phoneNumber: '02-3789-9688',
     naverMapUrl: 'https://naver.me/xUStEoCm',
@@ -999,7 +999,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 891,
     name: '소소라면 닭꼬치',
-    category: '맥주,호프',
+    category: '주점',
     roadAddress: '서울 용산구 한강대로 268-1 1층',
     phoneNumber: '',
     naverMapUrl: 'https://naver.me/5X962knI',
@@ -1019,7 +1019,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 890,
     name: '대구막창껍데기',
-    category: '곱창,막창,양',
+    category: '고기',
     roadAddress: '서울 용산구 청파로 320-3',
     phoneNumber: '02-718-8490',
     naverMapUrl: 'https://naver.me/xswMWrKM',
@@ -1039,7 +1039,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 822,
     name: '사랑방 참숯화로구이',
-    category: '육류,고기요리',
+    category: '고기',
     roadAddress: '서울 용산구 신흥로36길 4',
     phoneNumber: '02-774-5950',
     naverMapUrl: 'https://naver.me/5mYgbgiu',
@@ -1059,7 +1059,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 1010,
     name: '다온상회',
-    category: '육류,고기요리',
+    category: '고기',
     roadAddress: '서울 은평구 연서로 205-2 1층',
     phoneNumber: '02-387-0555',
     naverMapUrl: 'https://naver.me/5HSrInMc',
@@ -1086,7 +1086,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 985,
     name: '불끈',
-    category: '장어,먹장어요리',
+    category: '고기',
     roadAddress: '서울 마포구 토정로35길 11 지1층 B01호',
     phoneNumber: '0507-1468-1998',
     naverMapUrl: 'https://naver.me/5jjtLYj1',
@@ -1106,7 +1106,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 978,
     name: '야키토리 키유',
-    category: '일식튀김,꼬치',
+    category: '일식',
     roadAddress: '서울 마포구 도화4길 31 1층',
     phoneNumber: '0507-1473-1398',
     naverMapUrl: 'https://naver.me/GqNuaa8c',
@@ -1125,7 +1125,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 889,
     name: '우방정육식당',
-    category: '정육식당',
+    category: '고기',
     roadAddress: '서울 구로구 부일로1길 110 ,',
     phoneNumber: '02-2615-4651',
     naverMapUrl: 'https://naver.me/GZAjcBaX',
@@ -1164,7 +1164,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 873,
     name: '바우식당',
-    category: '한식뷔페',
+    category: '한식',
     roadAddress: '서울 강서구 곰달래로 239',
     phoneNumber: '',
     naverMapUrl: 'https://naver.me/xxplYA36',
@@ -1184,7 +1184,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 865,
     name: '2000냥 하우스 목동사거리점',
-    category: '맥주,호프',
+    category: '주점',
     roadAddress: '서울 강서구 곰달래로 266 2층 2000냥 하우스',
     phoneNumber: '',
     naverMapUrl: 'https://naver.me/GXExf278',
@@ -1203,7 +1203,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 784,
     name: '청수산153',
-    category: '일식당',
+    category: '일식',
     roadAddress: '경기 고양시 덕양구 의장로 140 101호',
     phoneNumber: '031-926-3460',
     naverMapUrl: 'https://naver.me/5hJeHn1c',
@@ -1224,7 +1224,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 883,
     name: '곱네 한우곱창 시흥본점',
-    category: '곱창,막창,양',
+    category: '고기',
     roadAddress:
       '경기 시흥시 수인로3312번길 16 센트럴푸르지오 테라스몰 131호132호',
     phoneNumber: '0507-1327-5295',
@@ -1246,7 +1246,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 877,
     name: '우동상회',
-    category: '요리주점',
+    category: '주점',
     roadAddress:
       '경기 부천시 원미구 조마루로297번길 43 1층 110, 111호 우동상회',
     phoneNumber: '0507-1400-3278',
@@ -1268,7 +1268,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 864,
     name: '중화요리첸',
-    category: '중식당',
+    category: '중식',
     roadAddress: '경기 부천시 원미구 부천로198번길 18',
     phoneNumber: '0507-1406-8229',
     naverMapUrl: 'https://naver.me/FGoz0AXH',
@@ -1287,7 +1287,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 849,
     name: '변가네 옹진냉면',
-    category: '냉면',
+    category: '면',
     roadAddress: '인천 미추홀구 한나루로586번길 92',
     phoneNumber: '032-875-0410',
     naverMapUrl: 'https://naver.me/FKKxfwHT',
@@ -1307,7 +1307,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 824,
     name: '산동포자',
-    category: '중식당',
+    category: '중식',
     roadAddress: '인천 부평구 마장로 75 대경빌딩',
     phoneNumber: '032-431-8885',
     naverMapUrl: 'https://naver.me/FiLEvE09',
@@ -1327,7 +1327,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 804,
     name: '모꼬지엔가이',
-    category: '이자카야',
+    category: '일식',
     roadAddress: '인천 남동구 문화로89번길 47 1층',
     phoneNumber: '0507-1334-5854',
     naverMapUrl: 'https://naver.me/5vMEgtqS',
@@ -1347,7 +1347,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 798,
     name: '모심 구월본점',
-    category: '전,빈대떡',
+    category: '한식',
     roadAddress: '인천 남동구 인주대로 684 로얄빌딩',
     phoneNumber: '032-288-9288',
     naverMapUrl: 'https://naver.me/FMA6eIJb',
@@ -1367,7 +1367,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 656,
     name: '남동어시장',
-    category: '생선회',
+    category: '일식',
     roadAddress: '인천 남동구 하촌로71번길 45 1층 남동어시장',
     phoneNumber: '0507-1438-9994',
     naverMapUrl: 'https://naver.me/GfbEEPB9',
@@ -1387,7 +1387,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 650,
     name: '에픽',
-    category: '패밀리레스토랑',
+    category: '패스트푸드',
     roadAddress: '인천 부평구 경원대로1363번길 8',
     phoneNumber: '0507-1326-9862',
     naverMapUrl: 'https://naver.me/GnvxxTkv',
@@ -1406,7 +1406,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 1007,
     name: '본수원갈비',
-    category: '육류,고기요리',
+    category: '고기',
     roadAddress: '경기 수원시 팔달구 중부대로223번길 41',
     phoneNumber: '031-211-8434',
     naverMapUrl: 'https://naver.me/FcagU09o',
@@ -1431,7 +1431,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 771,
     name: '오늘의 회전초밥',
-    category: '초밥,롤',
+    category: '일식',
     roadAddress: '경기 수원시 영통구 광교중앙로 170 효성해링턴타워 B101호',
     phoneNumber: '070-4799-9466',
     naverMapUrl: 'https://naver.me/FfWbQEEu',
@@ -1451,7 +1451,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 766,
     name: '스이센 광교',
-    category: '일식당',
+    category: '일식',
     roadAddress: '경기 수원시 영통구 센트럴파크로127번길 80-14 1층 101호',
     phoneNumber: '0507-1337-0525',
     naverMapUrl: 'https://naver.me/5jmNaKHB',
@@ -1471,7 +1471,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 660,
     name: '유동골뱅이',
-    category: '해물,생선요리',
+    category: '생선, 회',
     roadAddress: '경기 수원시 팔달구 행궁로 47',
     phoneNumber: '0507-1363-6619',
     naverMapUrl: 'https://naver.me/x8EFpl1o',
@@ -1491,7 +1491,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 623,
     name: '정철황소곱창',
-    category: '곱창,막창,양',
+    category: '고기',
     roadAddress: '경기 수원시 영통구 영통로130번길 42',
     phoneNumber: '031-204-9204',
     naverMapUrl: 'https://naver.me/5TiRAw5O',
@@ -1511,7 +1511,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 615,
     name: '대가',
-    category: '요리주점',
+    category: '주점',
     roadAddress: '경기 수원시 팔달구 매산로 1-10',
     phoneNumber: '0507-1389-0775',
     naverMapUrl: 'https://naver.me/GKxnJmeN',
@@ -1531,7 +1531,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 349,
     name: '하이크랩',
-    category: '대게요리',
+    category: '생선, 회',
     roadAddress: '경기 오산시 내삼미로79번길 27 3층 301호',
     phoneNumber: '031-374-1577',
     naverMapUrl: 'https://naver.me/GnGHJDFa',
@@ -1551,7 +1551,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 340,
     name: '쉐프가수최영현의취팔러마',
-    category: '중식당',
+    category: '중식',
     roadAddress: '경기도 용인시 기흥구 지곡동 478-2',
     phoneNumber: '031-8081-1115',
     naverMapUrl: 'https://naver.me/GTgkqPIp',
@@ -1572,7 +1572,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 1009,
     name: '찰리와 고추빵공장',
-    category: '카페,디저트',
+    category: '커피/디저트',
     roadAddress: '충남 청양군 청양읍 칠갑산로 208-1 1층',
     phoneNumber: '0507-1413-7568',
     naverMapUrl: 'https://naver.me/5BkApTVo',
@@ -1596,28 +1596,9 @@ export const restaurantsMock: Restaurant[] = [
       'https://cdn.welfarehello.com/naver-blog/production/cheongyange/2024-04/223401274125/cheongyange_223401274125_12.jpg',
   },
   {
-    id: 975,
-    name: '롤링힐스 호텔',
-    category: '4성급',
-    roadAddress: '경기 화성시 남양읍 시청로 290 롤링힐스 호텔',
-    phoneNumber: '031-268-1000',
-    naverMapUrl: 'https://naver.me/5zJl8oD7',
-    latitude: 37.1901917,
-    longitude: 126.8387137,
-    visitedCelebrities: [
-      {
-        id: 3,
-        name: '맛객리우',
-        profileImageUrl:
-          'https://yt3.googleusercontent.com/CDluFKwVxooXKsEa9WhPkBk2FGOnI8_qKFsMhr6GkAQj3JSrc-OhnwxcTM6hUGoBzcGgqB2Tow=s160-c-k-c0x00ffffff-no-rj',
-      },
-    ],
-    imgUrl: '',
-  },
-  {
     id: 927,
     name: '긍정식당',
-    category: '일식당',
+    category: '일식',
     roadAddress: '충남 천안시 서북구 불당21로 40 상가 109호 긍정식당',
     phoneNumber: '',
     naverMapUrl: 'https://naver.me/FZJW5mTj',
@@ -1655,7 +1636,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 925,
     name: '충남집순대',
-    category: '순대,순댓국',
+    category: '한식',
     roadAddress: '충남 천안시 동남구 병천면 충절로 1748',
     phoneNumber: '041-564-1079',
     naverMapUrl: 'https://naver.me/G4rLWNAF',
@@ -1674,7 +1655,7 @@ export const restaurantsMock: Restaurant[] = [
   {
     id: 924,
     name: '하루팡',
-    category: '베이커리',
+    category: '커피/디저트',
     roadAddress: '대전 유성구 문화원로 77 예성그랑펠리체 1층 109호',
     phoneNumber: '0507-1380-8567',
     naverMapUrl: 'https://naver.me/GtbqKLGB',

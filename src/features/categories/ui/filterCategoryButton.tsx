@@ -1,21 +1,21 @@
+import { useSearchParams } from 'react-router';
 import { borderRadius, Center, color, Modal, Text } from 'ik-ui-library';
 
 import {
   Category,
   useFilterCategoryMutation,
 } from '../../../entities/categories';
-import { useSearchParams } from 'react-router';
 
 interface FilterCategoryButtonProps {
   category: Category;
 }
 
 function FilterCategoryButton({ category }: FilterCategoryButtonProps) {
-  const { mutation } = useFilterCategoryMutation();
+  const { filter } = useFilterCategoryMutation();
   const [searchParams] = useSearchParams();
 
   const handleClick = () => {
-    mutation(category);
+    filter(category);
   };
 
   const isActive = searchParams.get('category') === category;

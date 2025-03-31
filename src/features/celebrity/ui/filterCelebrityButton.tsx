@@ -1,22 +1,23 @@
+import { useSearchParams } from 'react-router';
 import { borderRadius, Center, color, Modal, Text } from 'ik-ui-library';
 
 import {
   Celebrity,
   useFilterCelebMutation,
 } from '../../../entities/celebrities';
-import { useSearchParams } from 'react-router';
 
 interface FilterCelebrityButtonProps {
   celeb: Celebrity;
 }
 
 function FilterCelebrityButton({ celeb }: FilterCelebrityButtonProps) {
-  const { mutation } = useFilterCelebMutation();
+  const { filter } = useFilterCelebMutation();
+
   const [searchParams] = useSearchParams();
   const isActive = searchParams.get('celeb') === celeb.name;
 
   const handleClick = () => {
-    mutation(celeb.name);
+    filter(celeb.name);
   };
 
   return (

@@ -3,17 +3,13 @@ import { useFilterCelebMutation } from '../../../entities/celebrities';
 import { useSearchParams } from 'react-router';
 
 function ResetFilterCelebrities() {
-  const { mutation } = useFilterCelebMutation();
+  const { filter } = useFilterCelebMutation();
   const [searchParams] = useSearchParams();
   const isActive = searchParams.get('celeb') === null;
 
-  const handleClick = () => {
-    mutation();
-  };
-
   return (
     <Modal.Close
-      externalOnClick={handleClick}
+      externalOnClick={filter}
       etcStyles={{
         width: '100%',
         height: '50px',

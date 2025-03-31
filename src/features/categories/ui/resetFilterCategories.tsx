@@ -4,17 +4,14 @@ import { borderRadius, Center, color, Modal, Text } from 'ik-ui-library';
 import { useFilterCategoryMutation } from '../../../entities/categories';
 
 function ResetFilterCategories() {
-  const { mutation } = useFilterCategoryMutation();
+  const { filter } = useFilterCategoryMutation();
+
   const [searchParams] = useSearchParams();
   const isActive = searchParams.get('category') === null;
 
-  const handleClick = () => {
-    mutation();
-  };
-
   return (
     <Modal.Close
-      externalOnClick={handleClick}
+      externalOnClick={filter}
       etcStyles={{
         width: '100%',
         height: '50px',

@@ -8,6 +8,7 @@ import { queryClient } from '../../shared/lib/tanstack-query';
 import { restaurantsQuery, RestaurantsQueryParams } from './restaurants.api';
 
 import type { RestaurantsResponseType } from './restaurants.type';
+import { getQueryString } from '../../shared/lib/queryString';
 
 export const keys = {
   root: ['restaurant'],
@@ -57,11 +58,17 @@ export const useRestaurantsQuery = () => {
 export const useRestaurantPageMutation = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const celebParams = searchParams.get('celeb') ?? undefined;
+  const categoryParams = searchParams.get('category') ?? undefined;
+
   const mutation = (pageNum: number) => {
-    setSearchParams({
-      ...searchParams,
-      page: pageNum.toString(),
-    });
+    setSearchParams(
+      getQueryString({
+        category: categoryParams,
+        celeb: celebParams,
+        page: pageNum.toString(),
+      })
+    );
   };
 
   const prevPageMutation = () => {

@@ -40,17 +40,40 @@ export const useCelebritiesQuery = () => {
 export const useFilterCelebMutation = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const mutation = (celebName?: string) => {
+  const categoryParams = searchParams.get('category') ?? undefined;
+  const latParams = String(searchParams.get('lat') ?? 37.511337);
+  const lngParams = String(searchParams.get('lng') ?? 127.012084);
+
+  const restaurantMutation = (celeb?: string) => {
     setSearchParams(
       getQueryString({
         page: '1',
-        category: searchParams.get('category'),
-        celeb: celebName,
+        category: categoryParams,
+        celeb: celeb,
       })
     );
   };
 
+  const mapMutation = (celeb?: string) => {
+    setSearchParams(
+      getQueryString({
+        celeb: celeb,
+        category: categoryParams,
+        lat: latParams,
+        lng: lngParams,
+      })
+    );
+  };
+
+  const filter = (celeb?: string) => {
+    if (location.pathname === '/restaurants' || location.pathname === '/') {
+      restaurantMutation(celeb);
+    } else if (location.pathname === '/map') {
+      mapMutation(celeb);
+    }
+  };
+
   return {
-    mutation,
+    filter,
   };
 };

@@ -55,23 +55,13 @@ export const useMapParams = () => {
   const latParams = String(searchParams.get('lat') ?? 37.511337);
   const lngParams = String(searchParams.get('lng') ?? 127.012084);
 
-  const setMapParams = ({
-    celeb,
-    category,
-    lat,
-    lng,
-  }: {
-    celeb?: string;
-    category?: string;
-    lat?: string;
-    lng?: string;
-  }) => {
+  const setMapParams = ({ lat, lng }: { lat?: string; lng?: string }) => {
     setSearchParams(
       getQueryString({
-        celeb: celeb ?? searchParams.get('celeb'),
-        category: category ?? searchParams.get('category'),
-        lat: lat ?? String(searchParams.get('lat') ?? 37.511337),
-        lng: lng ?? String(searchParams.get('lng') ?? 127.012084),
+        celeb: celebParams,
+        category: categoryParams,
+        lat: lat ?? latParams,
+        lng: lng ?? lngParams,
       })
     );
   };
@@ -94,8 +84,7 @@ export const useMapIdle = ({ action }: { action?: () => void }) => {
 
     setMapBounds(nmap.getBounds());
     action?.();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nmap]);
 
   useEffect(() => {
@@ -111,10 +100,7 @@ export const useMapIdle = ({ action }: { action?: () => void }) => {
 export const useMapRestaurantsQuery = () => {
   const nmap = useMap();
 
-  const { celebParams, categoryParams, latParams, lngParams, setMapParams } =
-    useMapParams();
-
-  // const location = useLocation();
+  const { celebParams, categoryParams, setMapParams } = useMapParams();
 
   const setMapCenterParams = useCallback(() => {
     if (!nmap) return;
@@ -127,19 +113,9 @@ export const useMapRestaurantsQuery = () => {
       lat,
       lng,
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nmap]);
+  }, [nmap, setMapParams]);
 
   const { mapBounds } = useMapIdle({ action: setMapCenterParams });
-
-  useEffect(() => {
-    nmap?.setCenter(
-      new naver.maps.LatLng(Number(latParams), Number(lngParams))
-    );
-    // zoom level 추가
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nmap]);
 
   return useQuery(
     restaurantsMarkersService.queryOptions({

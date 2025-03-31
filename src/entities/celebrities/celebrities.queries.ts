@@ -2,7 +2,7 @@ import { queryClient } from '../../shared/lib/tanstack-query';
 
 import {
   queryOptions as tsqQueryOptions,
-  useSuspenseQuery,
+  useQuery,
 } from '@tanstack/react-query';
 
 import { useCustomSearchParams } from '../../shared/hooks';
@@ -10,6 +10,7 @@ import { useCustomSearchParams } from '../../shared/hooks';
 import { celebritiesQuery } from './celebrities.api';
 
 import type { CelebritiesResponseType } from './celebrities.type';
+import { celebPlaceholderData } from './celebrities.mock';
 
 export const keys = {
   root: ['celebrities'],
@@ -29,12 +30,13 @@ export const celebritiesService = {
     return tsqQueryOptions<CelebritiesResponseType>({
       queryKey: celebritiesService.queryKey(),
       queryFn: celebritiesQuery,
+      placeholderData: celebPlaceholderData,
     });
   },
 };
 
 export const useCelebritiesQuery = () => {
-  return useSuspenseQuery(celebritiesService.queryOptions());
+  return useQuery(celebritiesService.queryOptions());
 };
 
 export const useFilterCelebMutation = () => {

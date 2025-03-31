@@ -1,5 +1,3 @@
-import { Suspense } from 'react';
-
 import { Flex, Modal, Text } from 'ik-ui-library';
 
 import { ModalContainer } from '../../../shared/ui/modal';
@@ -19,9 +17,7 @@ function OpenFilterCategoryModal() {
       }}
       modalContent={
         <ModalContainer title={'음식 카테고리를 골라주세요'}>
-          <Suspense fallback={<div>로딩중</div>}>
-            <FilterCategories />
-          </Suspense>
+          <FilterCategories />
         </ModalContainer>
       }
     >

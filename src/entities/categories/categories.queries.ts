@@ -2,7 +2,7 @@ import { queryClient } from '../../shared/lib/tanstack-query';
 
 import {
   queryOptions as tsqQueryOptions,
-  useSuspenseQuery,
+  useQuery,
 } from '@tanstack/react-query';
 
 import { useCustomSearchParams } from '../../shared/hooks';
@@ -10,6 +10,7 @@ import { useCustomSearchParams } from '../../shared/hooks';
 import { categoriesQuery } from './categories.api';
 
 import type { CategoriesResponseType } from './categories.type';
+import { categoryPlaceholderData } from './categories.mock';
 
 export const keys = {
   root: ['categories'],
@@ -29,12 +30,13 @@ export const categoriesService = {
     return tsqQueryOptions<CategoriesResponseType>({
       queryKey: categoriesService.queryKey(),
       queryFn: categoriesQuery,
+      placeholderData: categoryPlaceholderData,
     });
   },
 };
 
 export const useCategoriesQuery = () => {
-  return useSuspenseQuery(categoriesService.queryOptions());
+  return useQuery(categoriesService.queryOptions());
 };
 
 export const useFilterCategoryMutation = () => {

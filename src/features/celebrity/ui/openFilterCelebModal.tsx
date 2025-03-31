@@ -1,5 +1,3 @@
-import { Suspense } from 'react';
-
 import { Flex, Modal, Text } from 'ik-ui-library';
 
 import { ModalContainer } from '../../../shared/ui/modal';
@@ -19,9 +17,7 @@ function OpenFilterCelebModal() {
       }}
       modalContent={
         <ModalContainer title={'어떤 셀럽이 다녀간 음식점을 찾고 계신가요?'}>
-          <Suspense fallback={<div>로딩중</div>}>
-            <FilterCelebrities />
-          </Suspense>
+          <FilterCelebrities />
         </ModalContainer>
       }
     >

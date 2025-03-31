@@ -12,7 +12,7 @@ import { useSearchParams } from 'react-router';
 function RestaurantsPage() {
   const [searchParams] = useSearchParams();
 
-  const currentPage = Number(searchParams.get('page'));
+  const currentPage = Number(searchParams.get('page')) || 1;
 
   return (
     <Pagination.Provider currentPageNum={currentPage}>

@@ -34,8 +34,12 @@ function SidebarPortal() {
         </Flex>
         <Spacer direction="vertical" space={spacer['spacing5']} />
         <Flex direction="column" gap={'4px'}>
-          <RestaurantsLinkButton />
-          <MapLinkButton />
+          <Sidebar.Toggle etcStyles={{ width: '100%' }}>
+            <RestaurantsLinkButton />
+          </Sidebar.Toggle>
+          <Sidebar.Toggle etcStyles={{ width: '100%' }}>
+            <MapLinkButton />
+          </Sidebar.Toggle>
         </Flex>
       </div>
     </Sidebar.Content>

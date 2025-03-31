@@ -32,6 +32,7 @@ function HomeLayout() {
       >
         <Flex direction="column" gap={'4px'}>
           <RestaurantsLinkButton />
+
           <MapLinkButton />
         </Flex>
       </Responsive>

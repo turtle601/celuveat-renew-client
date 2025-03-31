@@ -15,8 +15,8 @@ function App() {
           <Global styles={getResetStyle()} />
           <Root />
           <ModalPortal />
+          <SidebarPortal />
         </ModalProvider>
-        <SidebarPortal />
       </BrowserRouter>
     </QueryClientProvider>
   );

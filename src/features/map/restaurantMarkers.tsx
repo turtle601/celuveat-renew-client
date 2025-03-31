@@ -1,17 +1,105 @@
-import { useMapRestaurantsMarkers } from '../../entities/map';
+import ReactDOMServer from 'react-dom/server';
 
-import RestaurantMarker from './restaurantMarker';
+import { useEffect } from 'react';
+import { useRestaurantMarkers } from '../../entities/restaurants/queries';
+import { Restaurant } from '../../entities/restaurants/restaurants.type';
+import Marker from '../../shared/ui/marker/model/marker';
+import RestaurantMarkerView from '../../entities/restaurants/ui/restaurantMarkerView';
+import { useMap } from '../../shared/ui/map/model';
+import { useModal } from 'ik-ui-library';
+import { useRestaurantsMarkersStore } from '../../shared/ui/marker';
+import { RestaurantCard } from '../../entities/restaurants';
+
+interface MarkerView1Props<T> {
+  marker: Marker<T>;
+  click?: VoidFunction;
+  mouseover?: VoidFunction;
+  mouseout?: VoidFunction;
+  children: React.ReactNode;
+}
+
+function MarkerView1<T>({
+  marker,
+  click,
+  mouseover,
+  mouseout,
+  children,
+}: MarkerView1Props<T>) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (map) {
+      marker.load({
+        click,
+        mouseover,
+        mouseout,
+      });
+
+      marker.marker.setMap(map);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [marker, map]);
+
+  useEffect(() => {
+    marker.marker.setIcon({
+      content: ReactDOMServer.renderToString(children),
+    });
+
+    if (marker.isFocus) {
+      marker.marker.setZIndex(500);
+    } else if (marker.isHover) {
+      marker.marker.setZIndex(1000);
+    } else {
+      marker.marker.setZIndex(100);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [marker, marker.isFocus, marker.isHover]);
+
+  return <></>;
+}
+
+function RestaurantMarker1({ marker }: { marker: Marker<Restaurant> }) {
+  const { open } = useModal();
+
+  const [, markerStore] = useRestaurantsMarkersStore();
+
+  const handleClick = () => {
+    open(<RestaurantCard restaurant={marker.data} />);
+    markerStore.focus(marker.id);
+  };
+
+  const handleMouseout = () => {
+    markerStore.notHover(marker.id);
+  };
+
+  const handleMouseover = () => {
+    markerStore.hover(marker.id);
+  };
+
+  return (
+    <MarkerView1
+      marker={marker}
+      click={handleClick}
+      mouseover={handleMouseover}
+      mouseout={handleMouseout}
+    >
+      <RestaurantMarkerView marker={marker} />
+    </MarkerView1>
+  );
+}
 
 function RestaurantMarkers() {
-  const { markerMap } = useMapRestaurantsMarkers();
+  const { markerMap } = useRestaurantMarkers();
 
   if (!markerMap) return;
 
   return (
     <>
-      {Object.values(markerMap).map((marker) => {
-        return <RestaurantMarker key={marker.id} marker={marker} />;
-      })}
+      {Object.values(markerMap).map((marker) => (
+        <RestaurantMarker1 key={marker.id} marker={marker} />
+      ))}
     </>
   );
 }

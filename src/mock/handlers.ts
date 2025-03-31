@@ -65,6 +65,7 @@ export const handlers = [
 
   http.get(`${API_URL}/maps`, ({ request }) => {
     const url = new URL(request.url);
+
     const celeb = url.searchParams.get('celeb');
 
     const filteredCelebRestaurant = celeb
@@ -101,8 +102,6 @@ export const handlers = [
     const filteredRestaurant = boundary
       ? filteredCategoryRestaurant.filter(isBoundary)
       : filteredCategoryRestaurant;
-
-    console.log(filteredRestaurant, 'filteredRestaurant');
 
     return HttpResponse.json<MapRestaurantsResponseType>({
       content: filteredRestaurant,

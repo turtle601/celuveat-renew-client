@@ -5,23 +5,29 @@ export type MarkerSnapshot<T> = {
 };
 
 export default class Markers<T> {
-  markerMap: Record<number, Marker<T>> = {};
+  private focusedId: number | null = null;
+
+  public markerMap: Record<number, Marker<T>> = {};
 
   constructor({ markers = [] }: { markers?: Marker<T>[] }) {
-    this.markerMap = markers.reduce<Record<number, Marker<T>>>(
-      (acc, marker) => {
-        acc[marker.id] = marker;
-        return acc;
-      },
-      {}
-    );
+    this.setMarkers(markers);
   }
 
-  addMarkers = (newMarkers: Marker<T>[]) => {
+  resetMarkers = () => {
+    Object.values(this.markerMap).forEach((marker) => {
+      marker.unload();
+    });
+  };
+
+  setMarkers = (newMarkers: Marker<T>[]) => {
     this.markerMap = newMarkers.reduce<Record<number, Marker<T>>>(
       (acc, marker) => {
         acc[marker.id] = marker;
-        marker.marker.setMap(marker.marker.getMap());
+
+        if (marker.id === this.focusedId) {
+          marker.isFocus = true;
+        }
+
         return acc;
       },
       this.markerMap
@@ -30,7 +36,7 @@ export default class Markers<T> {
 
   focusMarker = (id: number) => {
     this.blurMarker();
-
+    this.focusedId = id;
     this.markerMap[id].isFocus = true;
   };
 

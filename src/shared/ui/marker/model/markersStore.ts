@@ -10,8 +10,9 @@ export default class MarkersStore<T> extends ExternalStore<MarkerSnapshot<T>> {
     this.takeSnapshot();
   }
 
-  add = (markers: Marker<T>[]) => {
-    this.markers.addMarkers(markers);
+  set = (markers: Marker<T>[]) => {
+    this.markers.resetMarkers();
+    this.markers.setMarkers(markers);
     this.update();
   };
 

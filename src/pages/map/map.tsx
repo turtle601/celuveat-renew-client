@@ -1,9 +1,9 @@
 import { css } from '@emotion/react';
 import { Flex, Modal } from 'ik-ui-library';
 
-import { Map } from '../../entities/map';
-import { RestaurantMarkers } from '../../features/map';
+import { Map } from '../../shared/ui/map';
 
+import { RestaurantMarkers } from '../../features/map';
 import { OpenFilterCategoryModal } from '../../features/categories/ui';
 import { OpenFilterCelebModal } from '../../features/celebrity/ui';
 

@@ -13,3 +13,13 @@ export const getQueryString = (params: Params) => {
 
   return new URLSearchParams(result.join('&'));
 };
+
+export const getSearchParamsObject = (searchParams: URLSearchParams) => {
+  return [...searchParams.entries()].reduce<Record<string, string>>(
+    (acc, [key, value]) => {
+      acc[key] = value;
+      return acc;
+    },
+    {}
+  );
+};

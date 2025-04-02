@@ -9,6 +9,7 @@ import {
   useRestaurantPageMutation,
   useRestaurantsQuery,
 } from '../../../entities/restaurants';
+import { breakPoint } from '../../../shared/constant/breakpoint';
 
 function RestaurantsCardGrid() {
   const { data: restaurantsData } = useRestaurantsQuery();
@@ -23,7 +24,7 @@ function RestaurantsCardGrid() {
   return (
     <>
       <Grid.Container
-        as="section"
+        responsive={[[6, breakPoint.lg]]}
         etcStyles={{ width: '100%', height: 'min-content' }}
       >
         {restaurantsData.content.map((restaurant) => {

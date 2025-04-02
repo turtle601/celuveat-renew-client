@@ -14,7 +14,6 @@ import type {
 
 import type { CelebritiesResponseType } from '../entities/celebrities';
 import type { CategoriesResponseType } from '../entities/categories';
-import type { MapRestaurantsResponseType } from '../entities/map/map.type';
 
 export const handlers = [
   http.get(`${API_URL}/restaurants`, ({ request }) => {
@@ -103,7 +102,7 @@ export const handlers = [
       ? filteredCategoryRestaurant.filter(isBoundary)
       : filteredCategoryRestaurant;
 
-    return HttpResponse.json<MapRestaurantsResponseType>({
+    return HttpResponse.json({
       content: filteredRestaurant,
       size: filteredRestaurant.length,
     });

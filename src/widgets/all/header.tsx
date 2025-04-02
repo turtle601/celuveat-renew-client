@@ -45,9 +45,9 @@ function Header() {
               <Logo width={136} />
             </Link>
 
-            <Sidebar.Toggle etcStyles={{ width: '48px', height: '48px' }}>
+            <Sidebar.Open etcStyles={{ width: '48px', height: '48px' }}>
               <List />
-            </Sidebar.Toggle>
+            </Sidebar.Open>
           </Flex>
         </Responsive>
       </Container>

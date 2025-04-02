@@ -21,7 +21,7 @@ function SidebarPortal() {
         })}
       >
         <Flex gap={'1rem'}>
-          <Sidebar.Toggle
+          <Sidebar.Close
             etcStyles={{
               width: '48px',
               height: '48px',
@@ -29,17 +29,17 @@ function SidebarPortal() {
             }}
           >
             <Prev />
-          </Sidebar.Toggle>
+          </Sidebar.Close>
           <Logo width={48} />
         </Flex>
         <Spacer direction="vertical" space={spacer['spacing5']} />
         <Flex direction="column" gap={'4px'}>
-          <Sidebar.Toggle etcStyles={{ width: '100%' }}>
+          <Sidebar.Close etcStyles={{ width: '100%' }}>
             <RestaurantsLinkButton />
-          </Sidebar.Toggle>
-          <Sidebar.Toggle etcStyles={{ width: '100%' }}>
+          </Sidebar.Close>
+          <Sidebar.Close etcStyles={{ width: '100%' }}>
             <MapLinkButton />
-          </Sidebar.Toggle>
+          </Sidebar.Close>
         </Flex>
       </div>
     </Sidebar.Content>

@@ -1,9 +1,9 @@
 import { Flex, Modal, Text } from 'ik-ui-library';
 
-import { ModalContainer } from '../../../shared/ui/modal';
 import { useCustomSearchParams } from '../../../shared/hooks';
 
 import Down from '../../../shared/assets/arrow/down.svg?react';
+import { PortalContainer, PortalWrapper } from '../../../shared/ui/portal';
 
 import FilterCategories from './filterCategories';
 
@@ -16,9 +16,11 @@ function OpenFilterCategoryModal() {
         width: 'max-content',
       }}
       modalContent={
-        <ModalContainer title={'음식 카테고리를 골라주세요'}>
-          <FilterCategories />
-        </ModalContainer>
+        <PortalWrapper>
+          <PortalContainer title={'음식 카테고리를 골라주세요'}>
+            <FilterCategories />
+          </PortalContainer>
+        </PortalWrapper>
       }
     >
       <Flex align="center" gap={'4px'}>

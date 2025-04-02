@@ -3,7 +3,7 @@ import { borderRadius, Center, color, Modal, useModal } from 'ik-ui-library';
 
 import Down from '../../../assets/arrow/down.svg?react';
 
-function ModalContent() {
+function MarkerContent() {
   const { isOpen, content } = useModal();
 
   return (
@@ -41,4 +41,4 @@ function ModalContent() {
   );
 }
 
-export default ModalContent;
+export default MarkerContent;

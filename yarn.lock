@@ -898,14 +898,14 @@
   integrity sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==
 
 "@types/react-dom@^19.0.4":
-  version "19.0.4"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.0.4.tgz#bedba97f9346bd4c0fe5d39e689713804ec9ac89"
-  integrity sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==
+  version "19.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.1.0.tgz#29f4b0400edbef5166359cec39dca9ffd4f7ad51"
+  integrity sha512-21E2zejNNRtjG4hKIyJz4aWswGEcNFTgttA0bZIRGjj1HA/tbSUxIJnIcYbn98pwJck0cS1bsQhn6eaKqbcFWw==
 
 "@types/react@^19.0.10":
-  version "19.0.12"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.0.12.tgz#338b3f7854adbb784be454b3a83053127af96bd3"
-  integrity sha512-V6Ar115dBDrjbtXSrS+/Oruobc+qVbbUxDFC1RSbRqLt5SYvxxyIDrSC85RWml54g+jfNeEMZhEj7wW07ONQhA==
+  version "19.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.1.0.tgz#73c43ad9bc43496ca8184332b111e2aef63fc9da"
+  integrity sha512-UaicktuQI+9UKyA4njtDOGBD/67t8YEBt2xdfqu8+gP9hqPUPsiXlNPcpS2gVdjmis5GKPG3fCxbQLVgxsQZ8w==
   dependencies:
     csstype "^3.0.2"
 
@@ -1561,10 +1561,10 @@ ignore@^5.2.0, ignore@^5.3.1:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.3.2.tgz#3cd40e729f3643fd87cb04e50bf0eb722bc596f5"
   integrity sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==
 
-ik-ui-library@^1.9.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/ik-ui-library/-/ik-ui-library-1.9.0.tgz#7d144845ec7ec8da4c78f9246c44cabf3e7f4817"
-  integrity sha512-a6QVHPkr6NSxbLY0XTapDVobA2FyhbX9Fm3IOqKLKEs9SSm7i83Ue0oGhTOeBEtRLaRiLC5SR8S0aQxndXBCbQ==
+ik-ui-library@^1.9.1:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/ik-ui-library/-/ik-ui-library-1.9.1.tgz#3ec62e4a80ff1f57c1fadeae77daf414983be4ec"
+  integrity sha512-GEEZ+4H+1yuYcaAfErcAvBsum7vx8weuihHG8LS6n7ozlZrfanEHuk5FJIm0aBQf4yabHYbI5vrAR+kXOuUaNw==
   dependencies:
     zustand "^5.0.3"
 

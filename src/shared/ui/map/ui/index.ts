@@ -1,1 +1,1 @@
-export { default as ModalContent } from './modalContent';
+export { default as MarkerContent } from './markerContent';

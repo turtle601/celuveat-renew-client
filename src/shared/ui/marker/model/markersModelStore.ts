@@ -1,16 +1,18 @@
 import ExternalStore from '../../../store/externalStore';
-import Marker from './marker';
-import Markers, { MarkerSnapshot } from './markers';
 
-export default class MarkersStore<T> extends ExternalStore<MarkerSnapshot<T>> {
-  private markers = new Markers<T>({});
+import { MarkerModel } from './markerModel';
+import { MarkersModel, MarkersModelSnapshot } from './markersModel';
+
+export class MarkersStore<T> extends ExternalStore<MarkersModelSnapshot<T>> {
+  public snapshot: MarkersModelSnapshot<T> = {};
+  private markers = new MarkersModel<T>({});
 
   constructor() {
     super();
     this.takeSnapshot();
   }
 
-  set = (markers: Marker<T>[]) => {
+  set = (markers: MarkerModel<T>[]) => {
     this.markers.resetMarkers();
     this.markers.setMarkers(markers);
     this.update();

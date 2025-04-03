@@ -10,7 +10,7 @@ export default abstract class ExternalStore<Snapshot> {
     this.listeners.delete(listener);
   };
 
-  getSnapshot = () => {
+  getSnapshot = (): Snapshot => {
     return this.snapshot;
   };
 

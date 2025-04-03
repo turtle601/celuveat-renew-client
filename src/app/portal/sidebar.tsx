@@ -2,11 +2,11 @@ import { css } from '@emotion/react';
 
 import { borderRadius, Flex, Sidebar, spacer, Spacer } from 'ik-ui-library';
 
-import { MapLinkButton } from '../../features/map';
-import { RestaurantsLinkButton } from '../../features/restaurants';
-
 import Logo from '../../shared/assets/logo/logo-icon.svg?react';
 import Prev from '../../shared/assets/arrow/prev.svg?react';
+
+import { MapLinkButton } from '../../features/restaurants/map/ui';
+import { RestaurantsLinkButton } from '../../features/restaurants';
 
 function SidebarPortal() {
   return (

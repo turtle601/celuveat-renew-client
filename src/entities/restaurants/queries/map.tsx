@@ -6,15 +6,16 @@ import {
 
 import { useMap } from '../../../shared/ui/map/model';
 import { queryClient } from '../../../shared/lib/tanstack-query';
-import { useRestaurantsMarkersStore } from '../../../shared/ui/marker';
-import { useCustomSearchParams } from '../../../shared/hooks';
-import Marker from '../../../shared/ui/marker/model/marker';
 import { DEFAULT_COODINATE } from '../../../shared/constant/map';
+import { MarkerModel } from '../../../shared/ui/marker';
+import { useCustomSearchParams } from '../../../shared/hooks';
 
 import { getBoundaryParams } from '../mapping';
+
 import { mapRestaurantMarkersQuery } from '../api';
 
 import type { MapRestaurantsQueryParams } from '../api/type';
+import { useRestaurantMarkersStore } from '../store';
 
 const keys = {
   root: ['map'],
@@ -114,12 +115,12 @@ export const useRestaurantMarkers = () => {
 
   const { data } = useMapRestaurantsQuery();
 
-  const [snapshot, markerStore] = useRestaurantsMarkersStore();
+  const [snapshot, markerStore] = useRestaurantMarkersStore();
 
   useEffect(() => {
     if (data && map) {
       const markers = data.content.map((restaurant) => {
-        const marker = new Marker({
+        const marker = new MarkerModel({
           marker: new naver.maps.Marker({
             position: new naver.maps.LatLng(
               restaurant.latitude,

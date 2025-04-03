@@ -1,15 +1,15 @@
-import Marker from './marker';
+import { MarkerModel } from './markerModel';
 
-export type MarkerSnapshot<T> = {
-  markerMap?: Record<number, Marker<T>>;
+export type MarkersModelSnapshot<T> = {
+  markerMap?: Record<number, MarkerModel<T>>;
 };
 
-export default class Markers<T> {
+export class MarkersModel<T> {
   private focusedId: number | null = null;
 
-  public markerMap: Record<number, Marker<T>> = {};
+  public markerMap: Record<number, MarkerModel<T>> = {};
 
-  constructor({ markers = [] }: { markers?: Marker<T>[] }) {
+  constructor({ markers = [] }: { markers?: MarkerModel<T>[] }) {
     this.setMarkers(markers);
   }
 
@@ -19,8 +19,8 @@ export default class Markers<T> {
     });
   };
 
-  setMarkers = (newMarkers: Marker<T>[]) => {
-    this.markerMap = newMarkers.reduce<Record<number, Marker<T>>>(
+  setMarkers = (newMarkers: MarkerModel<T>[]) => {
+    this.markerMap = newMarkers.reduce<Record<number, MarkerModel<T>>>(
       (acc, marker) => {
         acc[marker.id] = marker;
 

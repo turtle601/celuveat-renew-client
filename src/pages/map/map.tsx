@@ -3,9 +3,9 @@ import { Flex, Modal } from 'ik-ui-library';
 
 import { Map } from '../../shared/ui/map';
 
-import { RestaurantMarkers } from '../../features/map';
-import { OpenFilterCategoryModal } from '../../features/categories/ui';
+import { RestaurantMarkers } from '../../features/restaurants/map/ui';
 import { OpenFilterCelebModal } from '../../features/celebrity/ui';
+import { OpenFilterCategoryModal } from '../../features/categories/ui';
 
 function MapPage() {
   return (

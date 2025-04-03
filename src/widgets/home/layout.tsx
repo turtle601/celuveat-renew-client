@@ -1,11 +1,11 @@
+import { css } from '@emotion/react';
 import { Outlet } from 'react-router';
 import { Flex, Responsive, spacer } from 'ik-ui-library';
 
 import { breakPoint } from '../../shared/constant/breakpoint';
 
-import { css } from '@emotion/react';
-import { MapLinkButton } from '../../features/map';
 import { RestaurantsLinkButton } from '../../features/restaurants/ui';
+import { MapLinkButton } from '../../features/restaurants/map/ui';
 
 function HomeLayout() {
   return (

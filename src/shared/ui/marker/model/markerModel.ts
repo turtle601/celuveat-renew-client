@@ -1,10 +1,10 @@
-interface MarkerOptions<T> {
+interface MarkerModelOptions<T> {
   marker: naver.maps.Marker;
   id: number;
   data: T;
 }
 
-export default class Marker<T> {
+export class MarkerModel<T> {
   id: number;
   marker: naver.maps.Marker;
   data: T;
@@ -12,7 +12,7 @@ export default class Marker<T> {
   isHover = false;
   listeners: naver.maps.MapEventListener[] = [];
 
-  constructor(options: MarkerOptions<T>) {
+  constructor(options: MarkerModelOptions<T>) {
     this.marker = options.marker;
     this.id = options.id;
     this.data = options.data;

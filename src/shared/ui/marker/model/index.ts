@@ -1,3 +1,3 @@
-export * from './markersStore';
-export * from './marker';
-export * from './markers';
+export * from './markerModel';
+export * from './markersModel';
+export * from './markersModelStore';

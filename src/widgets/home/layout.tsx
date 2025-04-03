@@ -4,8 +4,8 @@ import { Flex, Responsive, spacer } from 'ik-ui-library';
 
 import { breakPoint } from '../../shared/constant/breakpoint';
 
-import { RestaurantsLinkButton } from '../../features/restaurants/ui';
 import { MapLinkButton } from '../../features/restaurants/map/ui';
+import { RestaurantsLinkButton } from '../../features/restaurants';
 
 function HomeLayout() {
   return (

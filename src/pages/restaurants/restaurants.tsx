@@ -1,9 +1,10 @@
 import { Suspense } from 'react';
 import { Flex } from 'ik-ui-library';
 
-import { RestaurantsCardGrid } from '../../features/restaurants/ui';
 import { OpenFilterCelebModal } from '../../features/celebrity/ui';
 import { OpenFilterCategoryModal } from '../../features/categories/ui';
+import { RestaurantsCardGrid } from '../../features/restaurants';
+
 import { Skelton } from '../../widgets/skelton';
 
 function RestaurantsPage() {

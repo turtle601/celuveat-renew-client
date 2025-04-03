@@ -1,18 +1,14 @@
 import { Center, Flex, Grid, spacer, Spacer } from 'ik-ui-library';
 
-import { Pagination } from '../../../shared/ui/pagination';
-
 import {
   RestaurantCard,
   RestaurantsEmpty,
-} from '../../../entities/restaurants/ui';
-
-import { breakPoint } from '../../../shared/constant/breakpoint';
-
-import {
   useRestaurantPageMutation,
   useRestaurantsQuery,
-} from '../../../entities/restaurants/queries';
+} from '../../../../entities/restaurants';
+
+import { breakPoint } from '../../../../shared/constant/breakpoint';
+import { Pagination } from '../../../../shared/ui/pagination';
 
 function RestaurantsCardGrid() {
   const { data: restaurantsData } = useRestaurantsQuery();

@@ -2,10 +2,12 @@ import { Grid } from 'ik-ui-library';
 
 import RestaurantCard from './restaurantCard';
 
+import { breakPoint } from '../../shared/constant/breakpoint';
+
 function RestaurantCardGrid() {
   return (
     <Grid.Container
-      as="section"
+      responsive={[[6, breakPoint.lg]]}
       etcStyles={{ width: '100%', height: 'min-content' }}
     >
       {Array(10)

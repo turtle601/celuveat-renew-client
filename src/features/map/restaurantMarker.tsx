@@ -3,12 +3,13 @@ import { useModal } from 'ik-ui-library';
 import Marker from '../../shared/ui/marker/model/marker';
 
 import { RestaurantCard } from '../../entities/restaurants';
+
 import {
   EventTarget,
   useRestaurantsMarkersStore,
 } from '../../shared/ui/marker';
 
-import type { Restaurant } from '../../entities/restaurants/restaurants.type';
+import type { Restaurant } from '../../entities/restaurants/type';
 
 interface RestaurantMarkerProps {
   marker: Marker<Restaurant>;

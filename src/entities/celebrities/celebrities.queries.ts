@@ -8,9 +8,9 @@ import {
 import { useCustomSearchParams } from '../../shared/hooks';
 
 import { celebritiesQuery } from './celebrities.api';
+import { celebPlaceholderData } from '../../mock/celebrities';
 
 import type { CelebritiesResponseType } from './celebrities.type';
-import { celebPlaceholderData } from './celebrities.mock';
 
 export const keys = {
   root: ['celebrities'],

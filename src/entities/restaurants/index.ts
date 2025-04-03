@@ -1,2 +1,4 @@
 export * from './ui';
-export * from './restaurants.queries';
+export * from './queries';
+export * from './type';
+export * from './mapping';

@@ -3,14 +3,18 @@ import {
   useSuspenseQuery,
 } from '@tanstack/react-query';
 
-import { useCustomSearchParams } from '../../shared/hooks';
-import { queryClient } from '../../shared/lib/tanstack-query';
+import { restaurantsQuery } from '../api';
 
-import { restaurantsQuery, RestaurantsQueryParams } from './restaurants.api';
+import { useCustomSearchParams } from '../../../shared/hooks';
 
-import type { RestaurantsResponseType } from './restaurants.type';
+import { queryClient } from '../../../shared/lib/tanstack-query';
 
-export const keys = {
+import type {
+  RestaurantsQueryParams,
+  RestaurantsResponseType,
+} from '../api/type';
+
+const keys = {
   root: ['restaurants'],
   queryParams: (params: RestaurantsQueryParams) => {
     return { ...params };

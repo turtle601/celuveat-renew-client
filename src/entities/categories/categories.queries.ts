@@ -8,9 +8,9 @@ import {
 import { useCustomSearchParams } from '../../shared/hooks';
 
 import { categoriesQuery } from './categories.api';
+import { categoryPlaceholderData } from '../../mock/categories';
 
 import type { CategoriesResponseType } from './categories.type';
-import { categoryPlaceholderData } from './categories.mock';
 
 export const keys = {
   root: ['categories'],

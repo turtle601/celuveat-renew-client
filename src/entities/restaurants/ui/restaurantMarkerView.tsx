@@ -1,10 +1,9 @@
 import { borderRadius, color } from 'ik-ui-library';
 
+import Eye from '../../../shared/assets/etc/eye.svg?react';
 import Marker from '../../../shared/ui/marker/model/marker';
 
-import type { Restaurant } from '../restaurants.type';
-
-import Eye from '../../../shared/assets/etc/eye.svg?react';
+import type { Restaurant } from '../type';
 
 interface RestaurantMarkerViewProps {
   marker: Marker<Restaurant>;

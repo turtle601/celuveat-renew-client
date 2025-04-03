@@ -1,4 +1,4 @@
-import type { Celebrity } from '../celebrities/celebrities.type';
+import type { Celebrity } from '../../celebrities';
 
 export type Restaurant = {
   id: number;
@@ -11,10 +11,4 @@ export type Restaurant = {
   longitude: number;
   visitedCelebrities: Celebrity[];
   imgUrl: string;
-};
-
-export type RestaurantsResponseType = {
-  content: Restaurant[];
-  totalPage: number;
-  size: number;
 };

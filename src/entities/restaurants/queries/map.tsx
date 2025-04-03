@@ -9,15 +9,14 @@ import { queryClient } from '../../../shared/lib/tanstack-query';
 import { useRestaurantsMarkersStore } from '../../../shared/ui/marker';
 import { useCustomSearchParams } from '../../../shared/hooks';
 import Marker from '../../../shared/ui/marker/model/marker';
-
-import {
-  mapRestaurantMarkersQuery,
-  type MapRestaurantsQueryParams,
-} from '../api';
-import { getBoundaryParams } from '../mapping';
 import { DEFAULT_COODINATE } from '../../../shared/constant/map';
 
-export const keys = {
+import { getBoundaryParams } from '../mapping';
+import { mapRestaurantMarkersQuery } from '../api';
+
+import type { MapRestaurantsQueryParams } from '../api/type';
+
+const keys = {
   root: ['map'],
   searchParams: (params: MapRestaurantsQueryParams) => {
     return { ...params };

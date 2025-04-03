@@ -1,6 +1,6 @@
-import { restaurantsMock } from '../restaurants/restaurants.mock';
+import { restaurantsMock } from './restaurants';
 
-import type { Celebrity } from './celebrities.type';
+import type { Celebrity } from '../entities/celebrities';
 
 export const getCelebritiesMock = () => {
   return restaurantsMock

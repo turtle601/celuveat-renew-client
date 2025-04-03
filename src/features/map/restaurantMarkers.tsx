@@ -2,13 +2,19 @@ import ReactDOMServer from 'react-dom/server';
 
 import { useEffect } from 'react';
 import { useRestaurantMarkers } from '../../entities/restaurants/queries';
-import { Restaurant } from '../../entities/restaurants/restaurants.type';
+
 import Marker from '../../shared/ui/marker/model/marker';
-import RestaurantMarkerView from '../../entities/restaurants/ui/restaurantMarkerView';
+
 import { useMap } from '../../shared/ui/map/model';
 import { useModal } from 'ik-ui-library';
 import { useRestaurantsMarkersStore } from '../../shared/ui/marker';
-import { RestaurantCard } from '../../entities/restaurants';
+
+import {
+  RestaurantCard,
+  RestaurantMarkerView,
+} from '../../entities/restaurants';
+
+import type { Restaurant } from '../../entities/restaurants/type';
 
 interface MarkerView1Props<T> {
   marker: Marker<T>;

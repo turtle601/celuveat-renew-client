@@ -3,10 +3,10 @@ import { color, Flex, spacer, Spacer, Text } from 'ik-ui-library';
 
 import Star from '../../../shared/assets/etc/star.svg?react';
 
-import type { Restaurant } from '../restaurants.type';
-
 import CustomImage from '../../../shared/ui/image';
 import { FALLBACK_IMG_URL } from '../../../shared/constant/url';
+
+import type { Restaurant } from '../type';
 
 interface RestaurantCardProps {
   restaurant: Restaurant;

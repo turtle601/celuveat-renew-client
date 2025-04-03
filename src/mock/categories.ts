@@ -1,4 +1,4 @@
-import { restaurantsMock } from '../restaurants/restaurants.mock';
+import { restaurantsMock } from './restaurants';
 
 export const getCategoriesMock = () => {
   return restaurantsMock

@@ -1,4 +1,4 @@
-import { Restaurant } from './restaurants.type';
+import type { Restaurant } from '../entities/restaurants/type';
 
 export const restaurantsMock: Restaurant[] = [
   {

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router';
 
-import type { Restaurant } from '../../entities/restaurants/restaurants.type';
+import type { Restaurant } from '../../entities/restaurants/type';
 
 type MapElementType = {
   setMap(map: naver.maps.Map | null): void;

@@ -4,11 +4,6 @@ import { API_URL } from '../shared/constant/url';
 
 import { restaurantsMock } from './restaurants';
 
-import { getCategoriesMock } from './categories';
-import { getCelebritiesMock } from './celebrities';
-
-import type { CelebritiesResponseType } from '../entities/celebrities';
-import type { CategoriesResponseType } from '../entities/categories';
 import type { Restaurant } from '../entities/restaurants/type';
 import type { RestaurantsResponseType } from '../entities/restaurants/api/type';
 
@@ -44,18 +39,6 @@ export const handlers = [
       ),
       totalPage: Math.ceil(filteredRestaurant.length / offSetNum),
       size: filteredRestaurant.length,
-    });
-  }),
-
-  http.get(`${API_URL}/celebrities`, () => {
-    return HttpResponse.json<CelebritiesResponseType>({
-      content: getCelebritiesMock(),
-    });
-  }),
-
-  http.get(`${API_URL}/categories`, () => {
-    return HttpResponse.json<CategoriesResponseType>({
-      content: getCategoriesMock(),
     });
   }),
 

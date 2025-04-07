@@ -1,21 +1,20 @@
 import { borderRadius, Center, color, Modal, Text } from 'ik-ui-library';
 
-import {
-  Category,
-  useFilterCategoryMutation,
-} from '../../../entities/categories';
 import { useCustomSearchParams } from '../../../shared/hooks';
+
+import type { Category } from '../../../entities/categories';
 
 interface FilterCategoryButtonProps {
   category: Category;
 }
 
 function FilterCategoryButton({ category }: FilterCategoryButtonProps) {
-  const { filter } = useFilterCategoryMutation();
-  const { searchParams } = useCustomSearchParams();
+  const { searchParams, setSearchParams } = useCustomSearchParams();
 
   const handleClick = () => {
-    filter(category);
+    setSearchParams({
+      category,
+    });
   };
 
   const isActive = searchParams['category'] === category;

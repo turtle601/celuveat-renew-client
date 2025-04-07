@@ -1,22 +1,4 @@
-import { restaurantsMock } from './restaurants';
-
-import type { Celebrity } from '../entities/celebrities';
-
-export const getCelebritiesMock = () => {
-  return restaurantsMock
-    .flatMap((restaurant) => {
-      return restaurant.visitedCelebrities;
-    })
-    .reduce<Celebrity[]>((acc, celeb) => {
-      if (acc.filter((v) => celeb.name === v.name).length === 0) {
-        acc.push(celeb);
-      }
-
-      return acc;
-    }, []);
-};
-
-export const celebPlaceholderData = {
+export const celebritiesData = {
   content: [
     {
       id: 19,

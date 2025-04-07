@@ -1,2 +1,2 @@
-export * from './categories.queries';
 export * from './categories.type';
+export * from './categories.data';

@@ -2,17 +2,20 @@ import { borderRadius, Center, color, Modal, Text } from 'ik-ui-library';
 
 import { useCustomSearchParams } from '../../../shared/hooks';
 
-import { useFilterCategoryMutation } from '../../../entities/categories';
-
 function ResetFilterCategories() {
-  const { filter } = useFilterCategoryMutation();
+  const { searchParams, setSearchParams } = useCustomSearchParams();
 
-  const { searchParams } = useCustomSearchParams();
+  const handleClick = () => {
+    setSearchParams({
+      category: undefined,
+    });
+  };
+
   const isActive = !searchParams['category'];
 
   return (
     <Modal.Close
-      externalOnClick={filter}
+      externalOnClick={handleClick}
       etcStyles={{
         width: '100%',
         height: '50px',

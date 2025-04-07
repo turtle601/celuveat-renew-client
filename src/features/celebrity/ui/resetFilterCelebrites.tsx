@@ -1,17 +1,20 @@
 import { borderRadius, Center, color, Modal, Text } from 'ik-ui-library';
 
 import { useCustomSearchParams } from '../../../shared/hooks';
-import { useFilterCelebMutation } from '../../../entities/celebrities';
 
 function ResetFilterCelebrities() {
-  const { filter } = useFilterCelebMutation();
-  const { searchParams } = useCustomSearchParams();
+  const { searchParams, setSearchParams } = useCustomSearchParams();
 
+  const handleClick = () => {
+    setSearchParams({
+      celeb: undefined,
+    });
+  };
   const isActive = !searchParams['celeb'];
 
   return (
     <Modal.Close
-      externalOnClick={filter}
+      externalOnClick={handleClick}
       etcStyles={{
         width: '100%',
         height: '50px',

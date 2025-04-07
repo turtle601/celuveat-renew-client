@@ -2,7 +2,7 @@ import { Grid } from 'ik-ui-library';
 
 import RestaurantCard from './restaurantCard';
 
-import { breakPoint } from '../../shared/constant/breakpoint';
+import { breakPoint } from '../../../shared/constant/breakpoint';
 
 function RestaurantCardGrid() {
   return (

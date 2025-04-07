@@ -1,15 +1,20 @@
-import { Suspense } from 'react';
 import { Flex } from 'ik-ui-library';
+
+import AsyncQueryBoundary from '../../shared/ui/request/asyncQueryBoundary';
 
 import { OpenFilterCelebModal } from '../../features/celebrity/ui';
 import { OpenFilterCategoryModal } from '../../features/categories/ui';
 import { RestaurantsCardGrid } from '../../features/restaurants';
 
-import { Skelton } from '../../widgets/skelton';
+import RestaurantsErrorFallback from '../../widgets/error/restaurantsErrorFallback';
+import { RestaurantsSuspenseFallback } from '../../widgets/suspense';
 
 function RestaurantsPage() {
   return (
-    <Suspense fallback={<Skelton.Home />}>
+    <AsyncQueryBoundary
+      errorFallback={RestaurantsErrorFallback}
+      suspenseFallback={<RestaurantsSuspenseFallback />}
+    >
       <Flex
         etcStyles={{
           padding: '40px 1.5rem 0 1.5rem',
@@ -22,7 +27,7 @@ function RestaurantsPage() {
         <OpenFilterCategoryModal />
       </Flex>
       <RestaurantsCardGrid />
-    </Suspense>
+    </AsyncQueryBoundary>
   );
 }
 

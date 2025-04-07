@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import {
   queryOptions as tsqQueryOptions,
-  useQuery,
+  useSuspenseQuery,
 } from '@tanstack/react-query';
 
 import { useMap } from '../../../shared/ui/map/model';
@@ -42,7 +42,7 @@ export const restaurantsMarkersService = {
       queryKey: restaurantsMarkersService.queryKey(params),
       queryFn: () => mapRestaurantMarkersQuery(params),
       placeholderData: (previousData) => previousData,
-      staleTime: 0,
+      staleTime: 500,
     });
   },
 };
@@ -99,7 +99,7 @@ export const useMapRestaurantsQuery = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nmap]);
 
-  return useQuery(
+  return useSuspenseQuery(
     restaurantsMarkersService.queryOptions({
       celeb: searchParams['celeb'],
       category: searchParams['category'],

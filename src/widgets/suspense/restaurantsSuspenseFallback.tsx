@@ -1,10 +1,11 @@
 import { color, Flex, Responsive } from 'ik-ui-library';
-import { breakPoint } from '../../shared/constant/breakpoint';
 
-import RestaurantCardGrid from './restaurantCardGrid';
 import { css } from '@emotion/react';
 
-function Home() {
+import { Skelton } from './skelton';
+import { breakPoint } from '../../shared/constant/breakpoint';
+
+function RestaurantsSuspenseFallback() {
   return (
     <Responsive
       defaultStyles={{
@@ -45,9 +46,9 @@ function Home() {
           })}
         ></div>
       </Flex>
-      <RestaurantCardGrid />
+      <Skelton.RestaurantCardGrid />
     </Responsive>
   );
 }
 
-export default Home;
+export default RestaurantsSuspenseFallback;

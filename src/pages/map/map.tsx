@@ -6,6 +6,10 @@ import { Map } from '../../shared/ui/map';
 import { RestaurantMarkers } from '../../features/restaurants/map/ui';
 import { OpenFilterCelebModal } from '../../features/celebrity/ui';
 import { OpenFilterCategoryModal } from '../../features/categories/ui';
+import AsyncQueryBoundary from '../../shared/ui/request/asyncQueryBoundary';
+
+import { MapErrorFallback } from '../../widgets/error';
+import { RestaurantMarkersSuspenseFallback } from '../../widgets/suspense';
 
 function MapPage() {
   return (
@@ -38,8 +42,13 @@ function MapPage() {
               })}
             ></div>
             <Map.Content />
+            <AsyncQueryBoundary
+              errorFallback={MapErrorFallback}
+              suspenseFallback={<RestaurantMarkersSuspenseFallback />}
+            >
+              <RestaurantMarkers />
+            </AsyncQueryBoundary>
           </div>
-          <RestaurantMarkers />
         </Modal.Provider>
       </div>
     </Map.Provider>

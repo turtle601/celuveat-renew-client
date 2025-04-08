@@ -3,3 +3,6 @@ export const RUN_TIME_ERROR_MESSAGE = '앱에 오류가 발생했습니다.' as 
 
 export const REQUEST_ERROR_MESSAGE = '데이터를 요청할 수 없습니다' as const;
 export const NETWORK_ERROR_MESSAGE = '네트워크 에러가 발생했습니다' as const;
+
+export const OFFLINE_ERROR_MESSAGE =
+  '현재 네트워크가 오프라인 상태입니다.' as const;

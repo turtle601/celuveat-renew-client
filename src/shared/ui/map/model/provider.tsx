@@ -1,15 +1,17 @@
-import { useState, useEffect } from 'react';
-import { NaverMapContext } from '.';
+import React, { useState, useEffect } from 'react';
+
 import { DEFAULT_COODINATE } from '../../../constant/map';
+
 import { useMapScript } from './useMapScript';
+import { NaverMapContext } from '.';
 
 interface MapProviderProps {
   children: React.ReactNode;
 }
 
 function Provider({ children }: MapProviderProps) {
-  const [map, setMap] = useState<naver.maps.Map | null>(null);
   const { isLoaded } = useMapScript();
+  const [map, setMap] = useState<naver.maps.Map | null>(null);
 
   useEffect(() => {
     if (!isLoaded) return;

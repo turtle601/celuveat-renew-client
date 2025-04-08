@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { networkError } from '../../../lib/request';
 
 const NAVER_MAP_SCRIPT_ID = 'naver-map-script';
 
@@ -20,18 +21,19 @@ export const useMapScript = () => {
     }
 
     const script = document.createElement('script');
+
     script.id = NAVER_MAP_SCRIPT_ID;
     script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${
       import.meta.env.VITE_NAVER_MAP_CLIENT_ID
     }`;
-    script.async = true;
 
     script.onload = () => {
       setIsLoaded(true);
     };
 
-    script.onerror = () => {
+    script.onerror = (error: unknown) => {
       setIsLoaded(false);
+      throw networkError({ error });
     };
 
     document.head.appendChild(script);

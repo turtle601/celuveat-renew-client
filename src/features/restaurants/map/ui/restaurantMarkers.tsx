@@ -1,17 +1,22 @@
-import RestaurantMarker from './restaurantMarker';
-
 import { useRestaurantMarkers } from '../../../../entities/restaurants';
 
-function RestaurantMarkers() {
-  const { markerMap } = useRestaurantMarkers();
+import RestaurantMarker from './restaurantMarker';
 
-  if (!markerMap) return;
+function RestaurantMarkers() {
+  const { markers: restaurantMarkers } = useRestaurantMarkers();
+
+  if (!restaurantMarkers) return;
 
   return (
     <>
-      {Object.values(markerMap).map((marker) => (
-        <RestaurantMarker key={marker.id} markerModel={marker} />
-      ))}
+      {restaurantMarkers.map((restaurantMarker) => {
+        return (
+          <RestaurantMarker
+            key={restaurantMarker.id}
+            restaurantMarker={restaurantMarker}
+          />
+        );
+      })}
     </>
   );
 }

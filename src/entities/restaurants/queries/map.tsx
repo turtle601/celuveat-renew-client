@@ -7,7 +7,7 @@ import {
 import { useMap } from '../../../shared/ui/map/model';
 import { queryClient } from '../../../shared/lib/tanstack-query';
 import { DEFAULT_COODINATE } from '../../../shared/constant/map';
-import { MarkerModel } from '../../../shared/ui/marker';
+
 import { useCustomSearchParams } from '../../../shared/hooks';
 
 import { getBoundaryParams } from '../mapping';
@@ -119,26 +119,20 @@ export const useRestaurantMarkers = () => {
 
   useEffect(() => {
     if (data && map) {
-      const markers = data.content.map((restaurant) => {
-        const marker = new MarkerModel({
-          marker: new naver.maps.Marker({
-            position: new naver.maps.LatLng(
-              restaurant.latitude,
-              restaurant.longitude
-            ),
-          }),
-          data: restaurant,
+      const markersModel = data.content.map((restaurant) => {
+        return {
           id: restaurant.id,
-        });
-
-        return marker;
+          data: restaurant,
+          isFocus: false,
+          isHover: false,
+        };
       });
 
-      markerStore.set(markers);
+      markerStore.set(markersModel);
     }
   }, [data, map, markerStore]);
 
   return {
-    markerMap: snapshot.markerMap,
+    markers: snapshot.markerData,
   };
 };

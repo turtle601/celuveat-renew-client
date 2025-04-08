@@ -1,10 +1,16 @@
 import ExternalStore from '../../../store/externalStore';
 
-import { MarkerModel } from './markerModel';
-import { MarkersModel, MarkersModelSnapshot } from './markersModel';
+import { MarkerModel, MarkersModel } from './markersModel';
+
+export interface MarkersModelSnapshot<T> {
+  markerData: MarkerModel<T>[];
+}
 
 export class MarkersStore<T> extends ExternalStore<MarkersModelSnapshot<T>> {
-  public snapshot: MarkersModelSnapshot<T> = {};
+  public snapshot: MarkersModelSnapshot<T> = {
+    markerData: [],
+  };
+
   private markers = new MarkersModel<T>({});
 
   constructor() {
@@ -13,7 +19,6 @@ export class MarkersStore<T> extends ExternalStore<MarkersModelSnapshot<T>> {
   }
 
   set = (markers: MarkerModel<T>[]) => {
-    this.markers.resetMarkers();
     this.markers.setMarkers(markers);
     this.update();
   };
@@ -33,8 +38,8 @@ export class MarkersStore<T> extends ExternalStore<MarkersModelSnapshot<T>> {
     this.update();
   };
 
-  notHover = (id: number) => {
-    this.markers.notHoverMarker(id);
+  notHover = () => {
+    this.markers.notHoverMarker();
     this.update();
   };
 
@@ -45,7 +50,7 @@ export class MarkersStore<T> extends ExternalStore<MarkersModelSnapshot<T>> {
 
   takeSnapshot = () => {
     this.snapshot = {
-      markerMap: this.markers.markerMap,
+      markerData: [...this.markers.markersData],
     };
   };
 }

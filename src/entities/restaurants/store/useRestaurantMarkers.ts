@@ -1,8 +1,10 @@
 import { useExternalStore } from '../../../shared/hooks/useExtermalStore';
-import { MarkersStore } from '../../../shared/ui/marker/model/markersModelStore';
+import {
+  MarkersModelSnapshot,
+  MarkersStore,
+} from '../../../shared/ui/marker/model/markersModelStore';
 
 import type { Restaurant } from '../type';
-import type { MarkersModelSnapshot } from '../../../shared/ui/marker';
 
 const markersStore = new MarkersStore<Restaurant>();
 

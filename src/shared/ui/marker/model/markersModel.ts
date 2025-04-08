@@ -1,56 +1,68 @@
-import { MarkerModel } from './markerModel';
-
-export type MarkersModelSnapshot<T> = {
-  markerMap?: Record<number, MarkerModel<T>>;
-};
+export interface MarkerModel<T> {
+  id: number;
+  data: T;
+  isFocus: boolean;
+  isHover: boolean;
+}
 
 export class MarkersModel<T> {
-  private focusedId: number | null = null;
-
-  public markerMap: Record<number, MarkerModel<T>> = {};
+  public focusedId: number | null = null;
+  public markersData: MarkerModel<T>[] = [];
 
   constructor({ markers = [] }: { markers?: MarkerModel<T>[] }) {
     this.setMarkers(markers);
   }
 
-  resetMarkers = () => {
-    Object.values(this.markerMap).forEach((marker) => {
-      marker.unload();
-    });
-  };
-
   setMarkers = (newMarkers: MarkerModel<T>[]) => {
-    this.markerMap = newMarkers.reduce<Record<number, MarkerModel<T>>>(
-      (acc, marker) => {
-        acc[marker.id] = marker;
+    this.markersData = newMarkers.map((marker) => {
+      if (this.focusedId === marker.id) {
+        return {
+          ...marker,
+          isFocus: true,
+        };
+      }
 
-        if (marker.id === this.focusedId) {
-          marker.isFocus = true;
-        }
-
-        return acc;
-      },
-      this.markerMap
-    );
+      return marker;
+    });
   };
 
   focusMarker = (id: number) => {
-    this.blurMarker();
+    this.markersData = this.markersData.map((marker) => {
+      return {
+        ...marker,
+        isFocus: marker.id === id,
+      };
+    });
+
     this.focusedId = id;
-    this.markerMap[id].isFocus = true;
   };
 
   blurMarker = () => {
-    Object.values(this.markerMap).forEach((marker) => {
-      marker.isFocus = false;
+    this.markersData = this.markersData.map((marker) => {
+      return {
+        ...marker,
+        isFocus: false,
+      };
     });
+
+    this.focusedId = null;
   };
 
   hoverMarker = (id: number) => {
-    this.markerMap[id].isHover = true;
+    this.markersData = this.markersData.map((marker) => {
+      return {
+        ...marker,
+        isHover: marker.id === id,
+      };
+    });
   };
 
-  notHoverMarker = (id: number) => {
-    this.markerMap[id].isHover = false;
+  notHoverMarker = () => {
+    this.markersData = this.markersData.map((marker) => {
+      return {
+        ...marker,
+        isHover: false,
+      };
+    });
   };
 }

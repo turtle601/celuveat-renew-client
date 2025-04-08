@@ -1,58 +1,42 @@
-import { useEffect } from 'react';
-import ReactDOMServer from 'react-dom/server';
+import { forwardRef, useImperativeHandle, useState } from 'react';
 
-import { useMap } from '../../map/model';
+import BindEvent from '../../map/overlay/ui/bindEvent';
+import Overlay from '../../map/overlay/ui/overlay';
 
-import { MarkerModel } from '../model';
+type uiEvents = [
+  'mousedown',
+  'mouseup',
+  'click',
+  'dblclick',
+  'rightclick',
+  'mouseover',
+  'mouseout',
+  'dragstart',
+  'drag',
+  'dragend'
+];
 
-interface MarkerProps<T> {
-  markerModel: MarkerModel<T>;
-  click?: VoidFunction;
-  mouseover?: VoidFunction;
-  mouseout?: VoidFunction;
-  children: React.ReactNode;
-}
+export type UIEventHandlers<Events extends readonly string[]> = Partial<
+  Record<
+    `on${Capitalize<Events[number]>}`,
+    (e: naver.maps.PointerEvent) => void
+  >
+>;
 
-function Marker<T>({
-  markerModel,
-  click,
-  mouseover,
-  mouseout,
-  children,
-}: MarkerProps<T>) {
-  const map = useMap();
+type MarkerProps = {
+  options: Omit<naver.maps.MarkerOptions, 'map'>;
+  events?: UIEventHandlers<uiEvents>;
+};
 
-  useEffect(() => {
-    if (map) {
-      markerModel.load({
-        click,
-        mouseover,
-        mouseout,
-      });
+const Marker = forwardRef<naver.maps.Marker, MarkerProps>((props, ref) => {
+  const [marker] = useState(() => new naver.maps.Marker(props.options));
+  useImperativeHandle(ref, () => marker);
 
-      markerModel.marker.setMap(map);
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [markerModel, map]);
-
-  useEffect(() => {
-    markerModel.marker.setIcon({
-      content: ReactDOMServer.renderToString(children),
-    });
-
-    if (markerModel.isFocus) {
-      markerModel.marker.setZIndex(500);
-    } else if (markerModel.isHover) {
-      markerModel.marker.setZIndex(1000);
-    } else {
-      markerModel.marker.setZIndex(100);
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [markerModel, markerModel.isFocus, markerModel.isHover]);
-
-  return <></>;
-}
+  return (
+    <Overlay element={marker}>
+      <BindEvent element={marker} listeners={props.events} />
+    </Overlay>
+  );
+});
 
 export default Marker;

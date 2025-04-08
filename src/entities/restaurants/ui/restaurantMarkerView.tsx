@@ -1,17 +1,20 @@
 import { borderRadius, color } from 'ik-ui-library';
 
 import Eye from '../../../shared/assets/etc/eye.svg?react';
-import { MarkerModel } from '../../../shared/ui/marker';
 
 import type { Restaurant } from '../type';
 
 interface RestaurantMarkerViewProps {
-  marker: MarkerModel<Restaurant>;
+  data: Restaurant;
+  isFocus: boolean;
+  isHover: boolean;
 }
 
-function RestaurantMarkerView({ marker }: RestaurantMarkerViewProps) {
-  const { data, isFocus, isHover } = marker;
-
+function RestaurantMarkerView({
+  data,
+  isFocus,
+  isHover,
+}: RestaurantMarkerViewProps) {
   const className = isFocus || isHover ? 'restaurant-marker_hover' : '';
 
   return (
@@ -40,4 +43,5 @@ function RestaurantMarkerView({ marker }: RestaurantMarkerViewProps) {
     </div>
   );
 }
+
 export default RestaurantMarkerView;

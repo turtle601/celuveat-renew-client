@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { useMap } from '../../model';
+
+import { useMap } from '../../../model';
 
 import type { MapElement } from '../type';
 

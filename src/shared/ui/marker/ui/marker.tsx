@@ -1,7 +1,5 @@
 import { forwardRef, useImperativeHandle, useState } from 'react';
-
-import BindEvent from '../../map/overlay/ui/bindEvent';
-import Overlay from '../../map/overlay/ui/overlay';
+import { BindEvent, Overlay } from '../../map';
 
 type uiEvents = [
   'mousedown',

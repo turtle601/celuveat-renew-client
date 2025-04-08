@@ -10,6 +10,7 @@ function ResetFilterCelebrities() {
       celeb: undefined,
     });
   };
+
   const isActive = !searchParams['celeb'];
 
   return (

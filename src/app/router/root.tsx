@@ -1,21 +1,48 @@
-import { Routes, Route } from 'react-router';
+import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router';
+
+import {
+  NOT_FOUND_ERROR_MESSAGE,
+  RUN_TIME_ERROR_MESSAGE,
+} from '../../shared/constant/message';
 
 import { Layout } from '../../widgets';
+import { MapPage, RestaurantsPage, RouterErrorPage } from '../../pages';
 
-import { MapPage, RestaurantsPage } from '../../pages';
+const router: RouteObject[] = [
+  {
+    path: '/',
+    element: <Layout.Header />,
+    errorElement: <RouterErrorPage errorMessage={RUN_TIME_ERROR_MESSAGE} />,
+    children: [
+      {
+        element: <Layout.Home />,
+        children: [
+          {
+            index: true, // path="/" 역할
+            element: <RestaurantsPage />,
+          },
+          {
+            path: 'restaurants',
+            element: <RestaurantsPage />,
+          },
+          {
+            path: 'map',
+            element: <MapPage />,
+          },
+        ],
+      },
+      {
+        path: '*',
+        element: <RouterErrorPage errorMessage={NOT_FOUND_ERROR_MESSAGE} />,
+      },
+    ],
+  },
+];
 
-function Root() {
-  return (
-    <Routes>
-      <Route element={<Layout.Header />}>
-        <Route element={<Layout.Home />}>
-          <Route path="/" element={<RestaurantsPage />} />
-          <Route path="/restaurants" element={<RestaurantsPage />} />
-          <Route path="/map" element={<MapPage />} />
-        </Route>
-      </Route>
-    </Routes>
-  );
+function Routers() {
+  const browserRouter = createBrowserRouter(router);
+
+  return <RouterProvider router={browserRouter}></RouterProvider>;
 }
 
-export default Root;
+export default Routers;

@@ -6,40 +6,44 @@ import { breakPoint } from '../../shared/constant/breakpoint';
 
 import { MapLinkButton } from '../../features/restaurants/map/ui';
 import { RestaurantsLinkButton } from '../../features/restaurants';
+import { ModalPortal, SidebarPortal } from '../portal';
 
 function HomeLayout() {
   return (
-    <Flex
-      etcStyles={{
-        width: '100%',
-        padding: `0 ${spacer.spacing2}`,
-      }}
-    >
-      <Responsive
-        defaultStyles={{
-          display: 'none',
+    <>
+      <Flex
+        etcStyles={{
+          width: '100%',
+          padding: `0 ${spacer.spacing2}`,
         }}
-        breakpoint={[breakPoint.lg]}
-        breakPointStyles={[
-          {
-            display: 'block',
-            width: '200px',
-            height: '100vh',
-            borderRight: '1px solid #eee',
-            padding: `2.5rem ${spacer['spacing2.5']} 0 0`,
-          },
-        ]}
       >
-        <Flex direction="column" gap={'4px'}>
-          <RestaurantsLinkButton />
-
-          <MapLinkButton />
-        </Flex>
-      </Responsive>
-      <div css={css({ width: '100%' })}>
-        <Outlet />
-      </div>
-    </Flex>
+        <Responsive
+          defaultStyles={{
+            display: 'none',
+          }}
+          breakpoint={[breakPoint.lg]}
+          breakPointStyles={[
+            {
+              display: 'block',
+              width: '200px',
+              height: '100vh',
+              borderRight: '1px solid #eee',
+              padding: `2.5rem ${spacer['spacing2.5']} 0 0`,
+            },
+          ]}
+        >
+          <Flex direction="column" gap={'4px'}>
+            <RestaurantsLinkButton />
+            <MapLinkButton />
+          </Flex>
+        </Responsive>
+        <div css={css({ width: '100%' })}>
+          <Outlet />
+        </div>
+      </Flex>
+      <ModalPortal />
+      <SidebarPortal />
+    </>
   );
 }
 

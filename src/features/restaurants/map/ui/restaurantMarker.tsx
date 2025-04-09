@@ -21,11 +21,10 @@ function RestaurantMarker({ restaurantMarker }: RestaurantMarkerProps) {
   const [, markerStore] = useRestaurantMarkersStore();
   const { setSearchParams } = useCustomSearchParams();
 
-  const getRestaurantMarkerIcon = useCallback(
-    (restaurantMarker: MarkerModel<Restaurant>) => {
-      const { isFocus, isHover } = restaurantMarker;
+  const getRestaurantMarkerIcon = useCallback(() => {
+    const { isFocus, isHover } = restaurantMarker;
 
-      return `
+    return `
         <div 
           style="
             width: max-content; 
@@ -34,8 +33,6 @@ function RestaurantMarker({ restaurantMarker }: RestaurantMarkerProps) {
             background-color: #fff;
             border-radius: ${borderRadius.md};
             transform: ${isFocus || isHover ? 'scale(1.1)' : 'scale(1)'};
-            pointer-events: none;
-          
           "
         >
           <div 
@@ -57,22 +54,14 @@ function RestaurantMarker({ restaurantMarker }: RestaurantMarkerProps) {
           </div>
         </div>
       `;
-    },
-    []
-  );
+  }, [restaurantMarker]);
 
   useEffect(() => {
     if (mapRef.current) {
-      const content = getRestaurantMarkerIcon(restaurantMarker);
-
       mapRef.current.setIcon({
-        content,
+        content: getRestaurantMarkerIcon(),
       });
-    }
-  }, [getRestaurantMarkerIcon, restaurantMarker]);
 
-  useEffect(() => {
-    if (mapRef.current) {
       const zIdx = restaurantMarker.isHover
         ? 1000
         : restaurantMarker.isFocus
@@ -81,11 +70,7 @@ function RestaurantMarker({ restaurantMarker }: RestaurantMarkerProps) {
 
       mapRef.current.setZIndex(zIdx);
     }
-  }, [
-    restaurantMarker.isFocus,
-    restaurantMarker.isHover,
-    restaurantMarker.data,
-  ]);
+  }, [getRestaurantMarkerIcon, restaurantMarker]);
 
   const handleClick = () => {
     setSearchParams({
@@ -110,7 +95,6 @@ function RestaurantMarker({ restaurantMarker }: RestaurantMarkerProps) {
   return (
     <Marker
       ref={mapRef}
-      key={restaurantMarker.id}
       options={{
         position: new naver.maps.LatLng(
           restaurantMarker.data.latitude,

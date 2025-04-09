@@ -10,7 +10,12 @@ function RestaurantMarkers() {
   return (
     <>
       {markers.map((restaurantMarker) => {
-        return <RestaurantMarker restaurantMarker={restaurantMarker} />;
+        return (
+          <RestaurantMarker
+            key={restaurantMarker.data.id}
+            restaurantMarker={restaurantMarker}
+          />
+        );
       })}
     </>
   );

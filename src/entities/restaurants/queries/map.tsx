@@ -146,17 +146,15 @@ export const useRestaurantFocusModal = (
 ) => {
   const { open, close } = useModal();
 
+  const restaurant = restaurants?.find((item) => item.id === Number(focusId));
+
   useEffect(() => {
     if (focusId) {
-      const restaurant = restaurants?.find(
-        (item) => item.id === Number(focusId)
-      );
-
       if (restaurant) open(<RestaurantCard restaurant={restaurant} />);
     } else {
       close();
     }
-  }, [close, focusId, open, restaurants]);
+  }, [close, focusId, open, restaurant]);
 };
 
 export const useRestaurantMarkers = () => {
@@ -176,11 +174,9 @@ export const useRestaurantMarkers = () => {
 };
 
 export const useClickRestaurantMarker = () => {
-  const [, markerStore] = useRestaurantMarkersStore();
   const { setSearchParams } = useCustomSearchParams();
 
   const clickRestaurantMarker = (restaurantMarker: MarkerModel<Restaurant>) => {
-    markerStore.focus(restaurantMarker.id);
     setSearchParams({
       focusId: restaurantMarker.id.toString(),
     });

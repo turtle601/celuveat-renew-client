@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, CSSProperties, useState } from 'react';
+import { ComponentPropsWithoutRef, CSSProperties } from 'react';
 
 interface CustomImageProps extends ComponentPropsWithoutRef<'img'> {
   src: string;
@@ -14,9 +14,6 @@ function CustomImage({
   etcStyles,
   ...attribute
 }: CustomImageProps) {
-  const [imgSrc, setImgSrc] = useState(src || fallbackSrc);
-  const [, setIsLoading] = useState(false);
-
   // const loadStyle = isLoading ? paintSkeleton() : {};
 
   return (
@@ -24,12 +21,11 @@ function CustomImage({
       css={{
         ...etcStyles,
       }}
-      src={imgSrc}
+      src={src || fallbackSrc}
       alt={alt}
       loading="lazy"
-      onLoad={() => setIsLoading(true)}
-      onError={() => {
-        setImgSrc(fallbackSrc);
+      onError={(e) => {
+        (e.currentTarget as HTMLImageElement).src = fallbackSrc;
       }}
       {...attribute}
     />

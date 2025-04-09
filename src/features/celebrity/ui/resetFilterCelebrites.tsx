@@ -7,6 +7,8 @@ function ResetFilterCelebrities() {
 
   const handleClick = () => {
     setSearchParams({
+      page: location.pathname === '/restaurants' ? '1' : null,
+      focusId: null,
       celeb: undefined,
     });
   };

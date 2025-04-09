@@ -2,9 +2,17 @@ import { css } from '@emotion/react';
 import { borderRadius, Center, color, Modal, useModal } from 'ik-ui-library';
 
 import Down from '../../../assets/arrow/down.svg?react';
+import { useCustomSearchParams } from '../../../hooks';
 
 function MarkerContent() {
   const { isOpen, content } = useModal();
+  const { setSearchParams } = useCustomSearchParams();
+
+  const cancelFocusMarker = () => {
+    setSearchParams({
+      focusId: null,
+    });
+  };
 
   return (
     isOpen && (
@@ -24,6 +32,7 @@ function MarkerContent() {
           }}
         >
           <Modal.Close
+            externalOnClick={cancelFocusMarker}
             etcStyles={{
               width: '100%',
               padding: '0.5rem 0 0 0',

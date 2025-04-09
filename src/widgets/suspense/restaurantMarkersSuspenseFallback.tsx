@@ -9,7 +9,7 @@ function RestaurantMarkersSuspenseFallback() {
       css={css({
         position: 'absolute',
         width: '100%',
-        bottom: '16px',
+        top: '48px',
       })}
     >
       <div

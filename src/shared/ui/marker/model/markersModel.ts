@@ -6,7 +6,6 @@ export interface MarkerModel<T> {
 }
 
 export class MarkersModel<T> {
-  public focusedId: number | null = null;
   public markersData: MarkerModel<T>[] = [];
 
   constructor({ markers = [] }: { markers?: MarkerModel<T>[] }) {
@@ -14,16 +13,7 @@ export class MarkersModel<T> {
   }
 
   setMarkers = (newMarkers: MarkerModel<T>[]) => {
-    this.markersData = newMarkers.map((marker) => {
-      if (this.focusedId === marker.id) {
-        return {
-          ...marker,
-          isFocus: true,
-        };
-      }
-
-      return marker;
-    });
+    this.markersData = [...newMarkers];
   };
 
   focusMarker = (id: number) => {
@@ -33,8 +23,6 @@ export class MarkersModel<T> {
         isFocus: marker.id === id,
       };
     });
-
-    this.focusedId = id;
   };
 
   blurMarker = () => {
@@ -44,8 +32,6 @@ export class MarkersModel<T> {
         isFocus: false,
       };
     });
-
-    this.focusedId = null;
   };
 
   hoverMarker = (id: number) => {

@@ -3,7 +3,7 @@ import Listener from './listener';
 import type { MapElement } from '../type';
 
 type BindEventProps = {
-  element: MapElement;
+  element: MapElement | naver.maps.Map;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   listeners?: Record<string, (...args: any[]) => any>;
 };

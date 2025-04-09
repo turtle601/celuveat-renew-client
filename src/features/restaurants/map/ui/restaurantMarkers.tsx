@@ -3,19 +3,14 @@ import { useRestaurantMarkers } from '../../../../entities/restaurants';
 import RestaurantMarker from './restaurantMarker';
 
 function RestaurantMarkers() {
-  const { markers: restaurantMarkers } = useRestaurantMarkers();
+  const { markers } = useRestaurantMarkers();
 
-  if (!restaurantMarkers) return;
+  if (!markers) return;
 
   return (
     <>
-      {restaurantMarkers.map((restaurantMarker) => {
-        return (
-          <RestaurantMarker
-            key={restaurantMarker.id}
-            restaurantMarker={restaurantMarker}
-          />
-        );
+      {markers.map((restaurantMarker) => {
+        return <RestaurantMarker restaurantMarker={restaurantMarker} />;
       })}
     </>
   );

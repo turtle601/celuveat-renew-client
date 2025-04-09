@@ -16,6 +16,10 @@ import { mapRestaurantMarkersQuery } from '../api';
 
 import type { MapRestaurantsQueryParams } from '../api/type';
 import { useRestaurantMarkersStore } from '../store';
+import { useModal } from 'ik-ui-library';
+import { MarkerModel } from '../../../shared/ui/marker';
+import { Restaurant } from '../type';
+import { RestaurantCard } from '../ui';
 
 const keys = {
   root: ['map'],
@@ -77,12 +81,11 @@ export const useMapRestaurantsQuery = () => {
     if (!nmap) return;
 
     const center = nmap.getCenter();
-    const lat = String(center.y);
-    const lng = String(center.x);
 
     setSearchParams({
-      lat,
-      lng,
+      lat: String(center.y),
+      lng: String(center.x),
+      zoom: String(nmap.getZoom()),
     });
   }, [nmap, setSearchParams]);
 
@@ -95,6 +98,8 @@ export const useMapRestaurantsQuery = () => {
         Number(searchParams['lng'] ?? DEFAULT_COODINATE.lng)
       )
     );
+
+    nmap?.setZoom(Number(searchParams['zoom'] ?? DEFAULT_COODINATE.zoom));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nmap]);
@@ -110,29 +115,78 @@ export const useMapRestaurantsQuery = () => {
   );
 };
 
-export const useRestaurantMarkers = () => {
+export const useInitializeMarkerStore = (
+  restaurants?: Restaurant[],
+  focusId?: string
+) => {
   const map = useMap();
-
-  const { data } = useMapRestaurantsQuery();
-
   const [snapshot, markerStore] = useRestaurantMarkersStore();
 
   useEffect(() => {
-    if (data && map) {
-      const markersModel = data.content.map((restaurant) => {
-        return {
-          id: restaurant.id,
-          data: restaurant,
-          isFocus: false,
-          isHover: false,
-        };
-      });
+    if (restaurants && map) {
+      const markersModel = restaurants.map((restaurant) => ({
+        id: restaurant.id,
+        data: restaurant,
+        isFocus: focusId === restaurant.id.toString(),
+        isHover: false,
+      }));
 
       markerStore.set(markersModel);
     }
-  }, [data, map, markerStore]);
+  }, [focusId, map, markerStore, restaurants]);
 
   return {
     markers: snapshot.markerData,
+  };
+};
+
+export const useRestaurantFocusModal = (
+  restaurants?: Restaurant[],
+  focusId?: string
+) => {
+  const { open, close } = useModal();
+
+  useEffect(() => {
+    if (focusId) {
+      const restaurant = restaurants?.find(
+        (item) => item.id === Number(focusId)
+      );
+
+      if (restaurant) open(<RestaurantCard restaurant={restaurant} />);
+    } else {
+      close();
+    }
+  }, [close, focusId, open, restaurants]);
+};
+
+export const useRestaurantMarkers = () => {
+  const { data } = useMapRestaurantsQuery();
+  const { searchParams } = useCustomSearchParams();
+  const { markers } = useInitializeMarkerStore(
+    data.content,
+    searchParams['focusId']
+  );
+
+  // 2) focusId 모달 로직
+  useRestaurantFocusModal(data.content, searchParams['focusId']);
+
+  return {
+    markers,
+  };
+};
+
+export const useClickRestaurantMarker = () => {
+  const [, markerStore] = useRestaurantMarkersStore();
+  const { setSearchParams } = useCustomSearchParams();
+
+  const clickRestaurantMarker = (restaurantMarker: MarkerModel<Restaurant>) => {
+    markerStore.focus(restaurantMarker.id);
+    setSearchParams({
+      focusId: restaurantMarker.id.toString(),
+    });
+  };
+
+  return {
+    click: clickRestaurantMarker,
   };
 };

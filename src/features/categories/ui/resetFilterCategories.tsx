@@ -7,6 +7,8 @@ function ResetFilterCategories() {
 
   const handleClick = () => {
     setSearchParams({
+      page: location.pathname === '/restaurants' ? '1' : null,
+      focusId: null,
       category: undefined,
     });
   };

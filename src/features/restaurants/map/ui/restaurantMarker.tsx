@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { borderRadius, color, useModal } from 'ik-ui-library';
+import { borderRadius, color } from 'ik-ui-library';
 
 import {
   Restaurant,
-  RestaurantCard,
+  useClickRestaurantMarker,
   useRestaurantMarkersStore,
 } from '../../../../entities/restaurants';
 
@@ -18,9 +18,8 @@ interface RestaurantMarkerProps {
 function RestaurantMarker({ restaurantMarker }: RestaurantMarkerProps) {
   const mapRef = useRef<naver.maps.Marker | null>(null);
 
-  const { open } = useModal();
-
   const [, markerStore] = useRestaurantMarkersStore();
+  const { click } = useClickRestaurantMarker();
 
   const getRestaurantMarkerIcon = useCallback(
     (restaurantMarker: MarkerModel<Restaurant>) => {
@@ -89,8 +88,7 @@ function RestaurantMarker({ restaurantMarker }: RestaurantMarkerProps) {
   ]);
 
   const handleClick = () => {
-    open(<RestaurantCard restaurant={restaurantMarker.data} />);
-    markerStore.focus(restaurantMarker.id);
+    click(restaurantMarker);
   };
 
   const handleMouseout = () => {

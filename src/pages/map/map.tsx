@@ -10,51 +10,49 @@ import { OpenFilterCategoryModal } from '../../features/categories/ui';
 
 import { MapErrorFallback } from '../../widgets/error';
 import { RestaurantMarkersSuspenseFallback } from '../../widgets/suspense';
-import { ErrorBoundary } from 'react-error-boundary';
 
 function MapPage() {
   return (
-    <ErrorBoundary fallback={<>에러 발생</>}>
-      <Map.Provider>
-        <div css={css({ width: '100%' })}>
-          <Flex
-            etcStyles={{
-              padding: '40px 1.5rem 0 1.5rem',
-              'button + button': {
-                marginLeft: '1rem',
-              },
-            }}
+    <Map.Provider>
+      <div css={css({ width: '100%' })}>
+        <Flex
+          etcStyles={{
+            padding: '40px 1.5rem 0 1.5rem',
+            'button + button': {
+              marginLeft: '1rem',
+            },
+          }}
+        >
+          <OpenFilterCelebModal />
+          <OpenFilterCategoryModal />
+        </Flex>
+        <Modal.Provider>
+          <div
+            css={css({
+              width: '100%',
+              paddingTop: '1.5rem',
+              position: 'relative',
+            })}
           >
-            <OpenFilterCelebModal />
-            <OpenFilterCategoryModal />
-          </Flex>
-          <Modal.Provider>
             <div
+              id="map"
               css={css({
                 width: '100%',
-                paddingTop: '1.5rem',
-                position: 'relative',
+                height: '75vh',
               })}
+            ></div>
+            <Map.Listener />
+            <Map.Content />
+            <AsyncQueryBoundary
+              errorFallback={MapErrorFallback}
+              suspenseFallback={<RestaurantMarkersSuspenseFallback />}
             >
-              <div
-                id="map"
-                css={css({
-                  width: '100%',
-                  height: '75vh',
-                })}
-              ></div>
-              <Map.Content />
-              <AsyncQueryBoundary
-                errorFallback={MapErrorFallback}
-                suspenseFallback={<RestaurantMarkersSuspenseFallback />}
-              >
-                <RestaurantMarkers />
-              </AsyncQueryBoundary>
-            </div>
-          </Modal.Provider>
-        </div>
-      </Map.Provider>
-    </ErrorBoundary>
+              <RestaurantMarkers />
+            </AsyncQueryBoundary>
+          </div>
+        </Modal.Provider>
+      </div>
+    </Map.Provider>
   );
 }
 

@@ -3,16 +3,22 @@ import { borderRadius, Center, color, Modal, Text } from 'ik-ui-library';
 import { useCustomSearchParams } from '../../../shared/hooks';
 
 import type { Category } from '../../../entities/categories';
+import { useLocation } from 'react-router';
 
 interface FilterCategoryButtonProps {
   category: Category;
 }
 
-function FilterCategoryButton({ category }: FilterCategoryButtonProps) {
+function FilterRestaurantCategoryButton({
+  category,
+}: FilterCategoryButtonProps) {
+  const location = useLocation();
   const { searchParams, setSearchParams } = useCustomSearchParams();
 
   const handleClick = () => {
     setSearchParams({
+      page: location.pathname === '/restaurants' ? '1' : null,
+      focusId: null,
       category,
     });
   };
@@ -36,4 +42,4 @@ function FilterCategoryButton({ category }: FilterCategoryButtonProps) {
   );
 }
 
-export default FilterCategoryButton;
+export default FilterRestaurantCategoryButton;

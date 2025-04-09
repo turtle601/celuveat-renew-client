@@ -1,7 +1,7 @@
 import { forwardRef, useImperativeHandle, useState } from 'react';
 import { BindEvent, Overlay } from '../../map';
 
-type uiEvents = [
+export type uiEvents = [
   'mousedown',
   'mouseup',
   'click',

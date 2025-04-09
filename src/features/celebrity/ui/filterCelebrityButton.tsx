@@ -13,6 +13,8 @@ function FilterCelebrityButton({ celeb }: FilterCelebrityButtonProps) {
 
   const handleClick = () => {
     setSearchParams({
+      page: location.pathname === '/restaurants' ? '1' : null,
+      focusId: null,
       celeb: celeb.name,
     });
   };

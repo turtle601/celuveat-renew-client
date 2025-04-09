@@ -1,9 +1,10 @@
 import { Provider } from './model';
-import { MarkerContent } from './ui';
+import { MapListener, MarkerContent } from './ui';
 
 export { BindEvent, Overlay } from './ui';
 
 export const Map = {
   Provider,
   Content: MarkerContent,
+  Listener: MapListener,
 } as const;

@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import type { MapElement } from '../type';
 
 type ListenerProps = {
-  element: MapElement;
+  element: MapElement | naver.maps.Map;
   eventName: string;
   fn: (...args: unknown[]) => void;
 };
 
 const useBindEvent = (
-  element: MapElement,
+  element: MapElement | naver.maps.Map,
   eventName: string,
   fn: VoidFunction
 ) => {

@@ -3,13 +3,13 @@ import { borderRadius, color } from 'ik-ui-library';
 
 import {
   Restaurant,
-  useClickRestaurantMarker,
   useRestaurantMarkersStore,
 } from '../../../../entities/restaurants';
 
 import { MarkerModel } from '../../../../shared/ui/marker';
 
 import Marker from '../../../../shared/ui/marker/ui';
+import { useCustomSearchParams } from '../../../../shared/hooks';
 
 interface RestaurantMarkerProps {
   restaurantMarker: MarkerModel<Restaurant>;
@@ -19,7 +19,7 @@ function RestaurantMarker({ restaurantMarker }: RestaurantMarkerProps) {
   const mapRef = useRef<naver.maps.Marker | null>(null);
 
   const [, markerStore] = useRestaurantMarkersStore();
-  const { click } = useClickRestaurantMarker();
+  const { setSearchParams } = useCustomSearchParams();
 
   const getRestaurantMarkerIcon = useCallback(
     (restaurantMarker: MarkerModel<Restaurant>) => {
@@ -88,15 +88,23 @@ function RestaurantMarker({ restaurantMarker }: RestaurantMarkerProps) {
   ]);
 
   const handleClick = () => {
-    click(restaurantMarker);
+    setSearchParams({
+      focusId: restaurantMarker.data.id.toString(),
+    });
   };
 
   const handleMouseout = () => {
-    markerStore.notHover();
+    markerStore.setMarker({
+      ...restaurantMarker,
+      isHover: false,
+    });
   };
 
   const handleMouseover = () => {
-    markerStore.hover(restaurantMarker.id);
+    markerStore.setMarker({
+      ...restaurantMarker,
+      isHover: true,
+    });
   };
 
   return (

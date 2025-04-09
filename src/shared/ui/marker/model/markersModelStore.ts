@@ -18,28 +18,13 @@ export class MarkersStore<T> extends ExternalStore<MarkersModelSnapshot<T>> {
     this.takeSnapshot();
   }
 
-  set = (markers: MarkerModel<T>[]) => {
+  setMarkers = (markers: MarkerModel<T>[]) => {
     this.markers.setMarkers(markers);
     this.update();
   };
 
-  focus = (id: number) => {
-    this.markers.focusMarker(id);
-    this.update();
-  };
-
-  blur = () => {
-    this.markers.blurMarker();
-    this.update();
-  };
-
-  hover = (id: number) => {
-    this.markers.hoverMarker(id);
-    this.update();
-  };
-
-  notHover = () => {
-    this.markers.notHoverMarker();
+  setMarker = (marker: MarkerModel<T>) => {
+    this.markers.setMarker(marker);
     this.update();
   };
 

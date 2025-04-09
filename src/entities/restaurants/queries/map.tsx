@@ -7,19 +7,16 @@ import {
 import { useMap } from '../../../shared/ui/map/model';
 import { queryClient } from '../../../shared/lib/tanstack-query';
 import { DEFAULT_COODINATE } from '../../../shared/constant/map';
-
 import { useCustomSearchParams } from '../../../shared/hooks';
 
-import { getBoundaryParams } from '../mapping';
-
 import { mapRestaurantMarkersQuery } from '../api';
-
-import type { MapRestaurantsQueryParams } from '../api/type';
 import { useRestaurantMarkersStore } from '../store';
-import { useModal } from 'ik-ui-library';
-import { MarkerModel } from '../../../shared/ui/marker';
-import { Restaurant } from '../type';
+import { getBoundaryParams } from '../mapping';
 import { RestaurantCard } from '../ui';
+import { useModal } from 'ik-ui-library';
+
+import type { Restaurant } from '../type';
+import type { MapRestaurantsQueryParams } from '../api/type';
 
 const keys = {
   root: ['map'],
@@ -131,7 +128,7 @@ export const useInitializeMarkerStore = (
         isHover: false,
       }));
 
-      markerStore.set(markersModel);
+      markerStore.setMarkers(markersModel);
     }
   }, [focusId, map, markerStore, restaurants]);
 
@@ -170,19 +167,5 @@ export const useRestaurantMarkers = () => {
 
   return {
     markers,
-  };
-};
-
-export const useClickRestaurantMarker = () => {
-  const { setSearchParams } = useCustomSearchParams();
-
-  const clickRestaurantMarker = (restaurantMarker: MarkerModel<Restaurant>) => {
-    setSearchParams({
-      focusId: restaurantMarker.id.toString(),
-    });
-  };
-
-  return {
-    click: clickRestaurantMarker,
   };
 };

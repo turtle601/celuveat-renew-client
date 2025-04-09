@@ -16,39 +16,13 @@ export class MarkersModel<T> {
     this.markersData = [...newMarkers];
   };
 
-  focusMarker = (id: number) => {
+  setMarker = (newMarker: MarkerModel<T>) => {
     this.markersData = this.markersData.map((marker) => {
-      return {
-        ...marker,
-        isFocus: marker.id === id,
-      };
-    });
-  };
+      if (newMarker.id === marker.id) {
+        return newMarker;
+      }
 
-  blurMarker = () => {
-    this.markersData = this.markersData.map((marker) => {
-      return {
-        ...marker,
-        isFocus: false,
-      };
-    });
-  };
-
-  hoverMarker = (id: number) => {
-    this.markersData = this.markersData.map((marker) => {
-      return {
-        ...marker,
-        isHover: marker.id === id,
-      };
-    });
-  };
-
-  notHoverMarker = () => {
-    this.markersData = this.markersData.map((marker) => {
-      return {
-        ...marker,
-        isHover: false,
-      };
+      return marker;
     });
   };
 }
